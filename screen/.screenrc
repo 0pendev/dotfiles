@@ -1,0 +1,10 @@
+# Starts at window 1
+bind c screen 1
+bind ^c screen 1
+bind 0 select 10
+screen 1
+# Turn Welcome message Off
+startup_message off
+# Make 256 color
+# Install ncurses-term and if the planets have aligned correctly it should work
+term xterm-256color
