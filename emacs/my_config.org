@@ -6,30 +6,26 @@
     (package-initialize) 
   #+END_SRC
 * Dependencies
+  The following code will check if all dependencies are installed and ask to install them if they are not.
   #+BEGIN_SRC emacs-lisp
     (defun ensure-package-installed (&rest packages)
-      (mapcar
-       (lambda (package)
-         (unless (package-installed-p package)
-           (package-install package)))
-         packages)
-    )
+        (mapcar
+         (lambda (package)
+           ;; (package-installed-p 'evil)
+           (if (package-installed-p package)
+               nil
+             (if (y-or-n-p (format "Package %s is missing. Install it? " package))
+                 (package-install package)
+               package)))
+         packages))
 
-    (ensure-package-installed
-    'company 
-    'company-c-headers 
-    'company-go
-    'company-jedi
-    'doom-theme
-    'emmet-mode
-    'go-snippets  
-    'js2-mode 
-    'markdown-mode
-    'neotree 
-    'yasnippet
-    'yasnippet-snippets
-    'web-mode
-    )
+    (or (file-exists-p package-user-dir)
+        (package-refresh-contents))
+
+    (ensure-package-installed 'company 'company-c-headers 'company-go 'company-jedi 'doom-themes 'emmet-mode 'go-snippets 'js2-mode 'markdown-mode 'neotree 'yasnippet 'yasnippet-snippets 'web-mode)
+
+    (package-initialize)
+
   #+END_SRC
 * UI/UX
 ** Modification de l'interface
@@ -213,16 +209,3 @@
              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
    #+END_SRC
-* Dependencies (melpa):
-  - company 
-  - company-c-headers 
-  - company-go
-  - company-jedi
-  - doom-theme
-  - emmet-mode
-  - go-snippets  
-  - js2-mode 
-  - markdown-mode
-  - neotree 
-  - yasnippet + yasnippet-snippets
-  - web-mode
