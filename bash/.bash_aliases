@@ -1,0 +1,1 @@
+alias emax="emacsclient -t"
