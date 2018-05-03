@@ -8,3 +8,8 @@ tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | s
 if [[ -z "$STY" ]]; then
    screen -xRR session_name
 fi
+
+# Golang configuration
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
