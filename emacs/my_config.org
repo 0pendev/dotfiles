@@ -22,7 +22,7 @@
     (or (file-exists-p package-user-dir)
         (package-refresh-contents))
 
-    (ensure-package-installed 'company 'company-c-headers 'company-go 'company-jedi 'doom-themes 'emmet-mode 'go-snippets 'js2-mode 'markdown-mode 'neotree 'yasnippet 'yasnippet-snippets 'web-mode)
+    (ensure-package-installed 'company 'company-c-headers 'company-go 'company-jedi 'emmet-mode 'go-snippets 'js2-mode 'markdown-mode 'neotree 'yasnippet 'yasnippet-snippets 'web-mode)
 
     (package-initialize)
 
