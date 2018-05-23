@@ -22,7 +22,7 @@
     (or (file-exists-p package-user-dir)
         (package-refresh-contents))
 
-    (ensure-package-installed 'company 'company-c-headers 'company-go 'company-jedi 'emmet-mode 'go-snippets 'js2-mode 'markdown-mode 'neotree 'yasnippet 'yasnippet-snippets 'web-mode)
+    (ensure-package-installed 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'emmet-mode 'go-snippets 'irony 'js2-mode 'markdown-mode 'neotree 'yasnippet 'yasnippet-snippets 'web-mode)
 
     (package-initialize)
 
@@ -50,13 +50,8 @@
     #+END_SRC
     We bind company-complete whith [tab] when company-mode is loaded. It will start the completion manually.
     #+BEGIN_SRC emacs-lisp
-      (defun company_tab_behaviour()
-        (interactive)
-        (indent-for-tab-command)
-        (company-complete))
-
       (eval-after-load 'company-mode
-        (define-key company-mode-map [tab] 'company_tab_behaviour))
+        (define-key company-mode-map [C-tab] 'company-complete))
     #+END_SRC
 *** Code snippets
     For snippets we use yasnippet and yasnippet-snippets (both from melpa).
@@ -69,8 +64,10 @@
 *** Autocomplétion
    We add completion for the headers by adding company-c-headers backend. And we start it at the load of c-mode.
    #+BEGIN_SRC emacs-lisp
-     (add-to-list 'company-backends 'company-c-headers)
+     (require 'irony)
+     (add-to-list 'company-backends 'company-c-headers 'company-irony 'company-irony-c-headers)
      (add-hook 'c-mode-hook 'company-mode)
+     (add-hook 'c-mode-hook 'irony-mode)   
    #+END_SRC
 *** Compilation
     *Installed clang on the machine. It will be used by company-mode.*

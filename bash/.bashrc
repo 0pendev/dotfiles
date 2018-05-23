@@ -9,7 +9,17 @@ if [[ $SCREEN ]];then
 	screen -xRR session_name
     fi
 fi
+if [[ $POWERLINE ]]; then
+	function _update_ps1() {
+  	  PS1="$(~/go/bin/powerline-go -error $?)\n"
+	}
 
+	if [ "$TERM" != "linux" ]; then
+    		PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+	fi
+else
+	PS1="$PS1\n"
+fi
 # Golang configuration
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/.local/bin
