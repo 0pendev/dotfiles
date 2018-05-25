@@ -8,23 +8,21 @@
 * Dependencies
   The following code will check if all dependencies are installed and ask to install them if they are not.
   #+BEGIN_SRC emacs-lisp
-    (defun ensure-package-installed (&rest packages)
-        (mapcar
-         (lambda (package)
-           ;; (package-installed-p 'evil)
-           (if (package-installed-p package)
-               nil
-             (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-                 (package-install package)
-               package)))
-         packages))
+        (defun ensure-package-installed (&rest packages)
+            (mapcar
+             (lambda (package)
+               ;; (package-installed-p 'evil)
+               (if (package-installed-p package)
+                   nil
+                 (package-install package)))
+             packages))
 
-    (or (file-exists-p package-user-dir)
-        (package-refresh-contents))
+        (or (file-exists-p package-user-dir)
+            (package-refresh-contents))
 
-    (ensure-package-installed 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'emmet-mode 'go-snippets 'irony 'js2-mode 'markdown-mode 'neotree 'yasnippet 'yasnippet-snippets 'web-mode)
+        (ensure-package-installed 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'emmet-mode 'go-snippets 'irony 'js2-mode 'markdown-mode 'neotree 'yasnippet 'yasnippet-snippets 'web-mode)
 
-    (package-initialize)
+        (package-initialize)
 
   #+END_SRC
 * UI/UX
