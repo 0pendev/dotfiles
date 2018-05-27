@@ -11,17 +11,16 @@ if [[ $SCREEN ]];then
 fi
 if [[ $POWERLINE ]]; then
 	function _update_ps1() {
-  	  PS1="$(~/go/bin/powerline-go -error $?)\n"
+  	  PS1="$(~/go/bin/powerline-go -error $?)\n"$'\u2937'" "
 	}
 
 	if [ "$TERM" != "linux" ]; then
     		PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 	fi
 else
-	PS1="$PS1\n"
-	PS1=$PS1$'\u2937' 
-	PS1="$PS1 "
+	PS1="$PS1\n"$'\u2937'" " 
 fi
+
 # Golang configuration
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/.local/bin
