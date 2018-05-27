@@ -19,6 +19,8 @@ if [[ $POWERLINE ]]; then
 	fi
 else
 	PS1="$PS1\n"
+	PS1=$PS1$'\u2937' 
+	PS1="$PS1 "
 fi
 # Golang configuration
 export GOPATH=$HOME/go
