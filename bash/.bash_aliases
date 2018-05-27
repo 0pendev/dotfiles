@@ -19,3 +19,5 @@ alias zypu="zypper update"
 alias apti="aptitude install"
 alias aptr="aptitude remove"
 alias aptu="aptitude update && aptitude upgrade"
+# Reddit on terminal is awesome
+alias reddit="rtv"
