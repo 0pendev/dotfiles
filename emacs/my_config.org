@@ -20,7 +20,7 @@
         (or (file-exists-p package-user-dir)
             (package-refresh-contents))
 
-        (ensure-package-installed 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'emmet-mode 'go-snippets 'irony 'js2-mode 'markdown-mode 'neotree 'yasnippet 'yasnippet-snippets 'web-mode)
+        (ensure-package-installed 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'elscreen 'emmet-mode 'go-snippets 'irony 'js2-mode 'markdown-mode 'neotree 'yasnippet 'yasnippet-snippets 'web-mode)
 
         (package-initialize)
 
@@ -146,3 +146,8 @@
              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
    #+END_SRC
+* Session
+  Starts elscreen session : 
+  #+BEGIN_SRC emacs-lisp
+    (elscreen-start)
+  #+END_SRC
