@@ -18,10 +18,13 @@ if [[ $POWERLINE ]]; then
     		PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 	fi
 else
-	PS1="$PS1\n"$'\u2937'" " 
+	PS1="[\u@\h \W]\n"$'\u2937'" " 
 fi
 
 # Golang configuration
 export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/.local/bin
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+# Pip binary path
+export PATH=$PATH:$HOME/.local/bin
 
