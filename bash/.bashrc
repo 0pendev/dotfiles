@@ -18,7 +18,7 @@ if [[ $POWERLINE ]]; then
     		PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 	fi
 else
-	PS1="$PS1\n"$'\u2937'" " 
+	PS1="[\u@\h \W]\n"$'\u2937'" " 
 fi
 
 # Golang configuration
