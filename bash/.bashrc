@@ -23,5 +23,8 @@ fi
 
 # Golang configuration
 export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/.local/bin
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+# Pip binary path
+export PATH=$PATH:$HOME/.local/bin
 
