@@ -50,6 +50,12 @@
      (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
      (global-set-key [f8] 'neotree-toggle)
    #+END_SRC
+** Spaceline
+   We use spaceline as our default mode-line.
+   #+BEGIN_SRC emacs-lisp
+     (require 'spaceline-all-the-icons)
+     (spaceline-all-the-icons-theme)
+   #+END_SRC
 * Programmation
 ** Général
 *** Autocomplétion
