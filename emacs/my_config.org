@@ -30,7 +30,7 @@
         (or (file-exists-p package-user-dir)
             (package-refresh-contents))
 
-        (ensure-package-installed 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'elscreen 'emmet-mode 'go-snippets 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'yasnippet 'yasnippet-snippets 'web-mode)
+        (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'elscreen 'emmet-mode 'go-snippets 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'yasnippet 'yasnippet-snippets 'web-mode)
 
         (package-initialize)
 
@@ -150,7 +150,7 @@
    #+END_SRC
    Finally we configure fancy TODO icons.
    #+BEGIN_SRC emacs-lisp
-     (setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)" "✘ CANCELED(c)")))
+     (setq org-todo-keywords '((sequence "☛ TODO(t)" "⚠️ IN WORK(w)" "|" "✔ DONE(d)" "✘ CANCELED(c)")))
    #+END_SRC
 ** Latex exports
    #+BEGIN_SRC emacs-lisp
