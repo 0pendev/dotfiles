@@ -30,7 +30,7 @@
     (or (file-exists-p package-user-dir)
         (package-refresh-contents))
 
-    (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'elscreen 'emmet-mode 'go-snippets 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'spaceline 'spaceline-all-the-icons 'yasnippet 'yasnippet-snippets 'web-mode)
+    (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'elscreen 'emmet-mode 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'spaceline 'spaceline-all-the-icons 'yasnippet 'yasnippet-snippets 'web-mode)
 
     (package-initialize)
 
@@ -133,6 +133,13 @@
       (add-hook 'python-mode-hook 'company-mode)
     #+END_SRC
 *** Snippets
+** JAVA
+*** Gradle
+    We configure gradle-mode to start when opening Java files.
+    #+BEGIN_SRC emacs-lisp
+      (require 'gradle-mode)
+      (add-hook 'java-mode-hook 'gradle-mode)
+    #+END_SRC
 * Org-mode
 ** Display
    First we add line wrapping in org-mode. It will be easier to write/read notes.
@@ -173,8 +180,3 @@
              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
              "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
    #+END_SRC
-* Session
-  Starts elscreen session : 
-  #+BEGIN_SRC emacs-lisp
-    (elscreen-start)
-  #+END_SRC
