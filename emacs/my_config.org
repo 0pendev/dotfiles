@@ -30,7 +30,7 @@
     (or (file-exists-p package-user-dir)
         (package-refresh-contents))
 
-    (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'elscreen 'emmet-mode 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'spaceline 'spaceline-all-the-icons 'yasnippet 'yasnippet-snippets 'web-mode)
+    (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'elscreen 'emmet-mode 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'org-kanban 'spaceline 'spaceline-all-the-icons 'yasnippet 'yasnippet-snippets 'web-mode)
 
     (package-initialize)
 
