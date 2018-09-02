@@ -10,15 +10,19 @@ if [[ $SCREEN ]];then
     fi
 fi
 if [[ $POWERLINE ]]; then
-	function _update_ps1() {
-  	  PS1="$(~/go/bin/powerline-go -error $?)\n"$'\u2937'" "
-	}
+    function _update_ps1() {
+  	PS1="$(~/go/bin/powerline-go -error $?)\n"$'\u2937'" "
+    }
 
-	if [ "$TERM" != "linux" ]; then
-    		PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-	fi
+    if [ "$TERM" != "linux" ]; then
+    	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+    fi
 else
-	PS1="[\u@\h \W]\n"$'\u2937'" " 
+    if [[ $OLD ]];then
+	PS1="[\u@\h \W]\n"$'\u2937'" "
+    else
+	PS1="[ \[\e]0;$(print_title)\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\] ] "
+    fi
 fi
 
 # Golang configuration
