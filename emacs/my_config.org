@@ -47,6 +47,7 @@
      (menu-bar-mode -1)
      (tool-bar-mode -1)
      (scroll-bar-mode -1)
+     (setq inhibit-startup-screen t)
    #+END_SRC
 ** Neotree
    NeoTree is a package that give us a quick view of our tree structure. It is common tool amongs modern editors. We toggle it with the [f8] key.
@@ -150,7 +151,7 @@
    In a lot of org document I have code. So the next line will do the syntax highlighting in org-mode.
    Finally we configure fancy TODO icons.
    #+BEGIN_SRC emacs-lisp
-     (use-package org-mode
+     (use-package org
        :config
        (add-hook 'org-mode-hook 'visual-line-mode)
        (setq org-src-fontify-natively t)
