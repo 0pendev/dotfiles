@@ -2,7 +2,7 @@
 alias emax="emacsclient -t"
 # Git aliases
 alias gita="git add"
-alias gitr="git remove"
+alias gitr="git rm"
 alias gitu="git add -u"
 alias gitm="git commit -m"
 alias gits="git status"
