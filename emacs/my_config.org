@@ -1,3 +1,15 @@
+* Use-package
+  #+BEGIN_SRC emacs-lisp
+    (eval-when-compile
+      (require 'use-package))
+  #+END_SRC
+* Repositories
+  We add different repositories.
+  #+BEGIN_SRC emacs-lisp
+    (require 'package)
+    (add-to-list 'package-archives
+		 '("melpa" . "http://melpa.org/packages/") t)
+  #+END_SRC
 * Setting up UTF-8
   #+BEGIN_SRC emacs-lisp
     (setq locale-coding-system 'utf-8)
@@ -8,119 +20,108 @@
     (when (display-graphic-p)
        (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
   #+END_SRC
-* Repositories
-  We add different repositories.
-  #+BEGIN_SRC emacs-lisp
-    (require 'package)
-    (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-    (package-initialize) 
-  #+END_SRC
 * Dependencies
   The following code will check if all dependencies are installed and ask to install them if they are not.
   #+BEGIN_SRC emacs-lisp
     (defun ensure-package-installed (&rest packages)
-        (mapcar
-         (lambda (package)
-           ;; (package-installed-p 'evil)
-           (if (package-installed-p package)
-               nil
-             (package-install package)))
-         packages))
+	(mapcar
+	 (lambda (package)
+	   ;; (package-installed-p 'evil)
+	   (if (package-installed-p package)
+	       nil
+	     (package-install package)))
+	 packages))
 
     (or (file-exists-p package-user-dir)
-        (package-refresh-contents))
+	(package-refresh-contents))
 
-    (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'elscreen 'emmet-mode 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'org-kanban 'spaceline 'spaceline-all-the-icons 'yasnippet 'yasnippet-snippets 'web-mode)
-
-    (package-initialize)
+    (defun install-dependencies ()
+      (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'elscreen 'emmet-mode 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'org-kanban 'spaceline 'spaceline-all-the-icons 'use-package 'yasnippet 'yasnippet-snippets 'web-mode)
+      (package-initialize))
 
   #+END_SRC
 * UI/UX
 ** Modification de l'interface
    We get rid of all this gui non-sense.
    #+BEGIN_SRC emacs-lisp
-     (menu-bar-mode -99)
+     (menu-bar-mode -1)
      (tool-bar-mode -1)
      (scroll-bar-mode -1)
    #+END_SRC
 ** Neotree
    NeoTree is a package that give us a quick view of our tree structure. It is common tool amongs modern editors. We toggle it with the [f8] key.
    #+BEGIN_SRC emacs-lisp
-     (require 'neotree)
-     (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-     (global-set-key [f8] 'neotree-toggle)
-   #+END_SRC
-** Spaceline
-   We use spaceline as our default mode-line.
-   #+BEGIN_SRC emacs-lisp
-     (require 'spaceline-all-the-icons)
-     (spaceline-all-the-icons-theme)
+     (use-package neotree
+	  :config
+	  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+	  (global-set-key [f8] 'neotree-toggle))
    #+END_SRC
 * Programmation
 ** Général
 *** Autocomplétion
     We start company-backend to add completion for some specific languages.
-    #+BEGIN_SRC emacs-lisp
-      (require 'company)
-    #+END_SRC
     We bind company-complete whith [tab] when company-mode is loaded. It will start the completion manually.
     #+BEGIN_SRC emacs-lisp
-      (eval-after-load 'company-mode
-        (define-key company-mode-map [C-tab] 'company-complete))
+      (use-package company
+	:config
+	(define-key company-mode-map [C-tab] 'company-complete))
     #+END_SRC
 *** Code snippets
     For snippets we use yasnippet and yasnippet-snippets (both from melpa).
     #+BEGIN_SRC emacs-lisp
-      (require 'yasnippet)
-      (yas-global-mode 1)
+      (use-package yasnippet
+	:config
+	(yas-global-mode 1))
     #+END_SRC
-
 ** C/C++
 *** Autocomplétion
    We add completion for the headers by adding company-c-headers backend. And we start it at the load of c-mode.
    #+BEGIN_SRC emacs-lisp
-     (require 'irony)
-     (add-to-list 'company-backends 'company-c-headers 'company-irony 'company-irony-c-headers)
-     (add-hook 'c-mode-hook 'company-mode)
-     (add-hook 'c-mode-hook 'irony-mode)   
-   #+END_SRC
+     (use-package irony
+       :after (company)
+       :config
+       (add-to-list 'company-backends 'company-c-headers 'company-irony 'company-irony-c-headers)
+       (add-hook 'c-mode-hook 'company-mode)
+       (add-hook 'c-mode-hook 'irony-mode))
+    #+END_SRC
 *** Compilation
     *Installed clang on the machine. It will be used by company-mode.*
 ** HTML
 *** Emmet-mode
-    Emmet-mode is a tool that helps you writte HTML code faster. 
+    Emmet-mode is a tool that helps you writte HTML code faster.
     We initialize it when html-mode starts.
     #+BEGIN_SRC emacs-lisp
       (add-hook 'html-mode-hook 'emmet-mode)
     #+END_SRC
 ** Javascript
-*** Autocomplétion
+*** js2-mode
     We start company-mode when js2 mode is loaded.
-    #+BEGIN_SRC emacs-lisp
-      (add-hook 'js2-mode-hook 'company-mode)
-
-    #+END_SRC
-*** JS2 mode
     The js2 mode is a mode to edit javascript. We force emacs to use it over js-mode.
     #+BEGIN_SRC emacs-lisp
-      (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+      (use-package js2-mode
+	:after (company)
+	:config
+	(add-hook 'js2-mode-hook 'company-mode)
+	(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode)))
     #+END_SRC
 ** JEE
 *** Web-mode
     Web-mode and emmet-mode work great together to build jsp pages. Let's start them when we open a jsp file:
     #+BEGIN_SRC emacs-lisp
-      (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
-      (add-hook 'web-mode 'company-mode)
+      (use-package web-mode
+	:after (company)
+	:config
+	(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+	(add-hook 'web-mode 'company-mode))
     #+END_SRC
 ** Go
 *** Autocomplétion
     We add the go backend for company-mode. We only load it when go-mode is loaded.
-    #+BEGIN_SRC emacs-lisp
-      (require 'company-go)
-    #+END_SRC
     We start company-mode when the go-mode is loaded.
     #+BEGIN_SRC emacs-lisp
-      (add-hook 'go-mode-hook 'company-mode)
+      (use-package company-go
+	:config
+	(add-hook 'go-mode-hook 'company-mode))
     #+END_SRC
     *It needs the golang-go and gocode deamon to be installed on the machine.*
 *** Snippets
@@ -128,55 +129,58 @@
 ** Python
 *** Autocomplétion
     #+BEGIN_SRC emacs-lisp
-      (setq python-shell-interpreter "python3")
-      (add-to-list 'company-backends '(company-jedi company-files))
-      (add-hook 'python-mode-hook 'company-mode)
+      (use-package python
+	:after (company)
+	:config
+	(setq python-shell-interpreter "python3")
+	(add-to-list 'company-backends '(company-jedi company-files))
+	(add-hook 'python-mode-hook 'company-mode))
     #+END_SRC
-*** Snippets
 ** JAVA
 *** Gradle
     We configure gradle-mode to start when opening Java files.
     #+BEGIN_SRC emacs-lisp
-      (require 'gradle-mode)
-      (add-hook 'java-mode-hook 'gradle-mode)
+      (use-package gradle-mode
+	:config
+	(add-hook 'java-mode-hook 'gradle-mode))
     #+END_SRC
 * Org-mode
 ** Display
    First we add line wrapping in org-mode. It will be easier to write/read notes.
-   #+BEGIN_SRC emacs-lisp
-   (add-hook 'org-mode-hook 'visual-line-mode)
-   #+END_SRC
    In a lot of org document I have code. So the next line will do the syntax highlighting in org-mode.
+   Finally we configure fancy TODO icons.
    #+BEGIN_SRC emacs-lisp
-     (setq org-src-fontify-natively t)
+     (use-package org-mode
+       :config
+       (add-hook 'org-mode-hook 'visual-line-mode)
+       (setq org-src-fontify-natively t)
+       (setq org-todo-keywords '((sequence "☛ TODO(t)" "⚠️ IN WORK(w)" "|" "✔ DONE(d)" "✘ CANCELED(c)"))))
    #+END_SRC
    We configure some pretty bullet points
    #+BEGIN_SRC emacs-lisp
-     (require 'org-bullets)
-     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-   #+END_SRC
-   Finally we configure fancy TODO icons.
-   #+BEGIN_SRC emacs-lisp
-     (setq org-todo-keywords '((sequence "☛ TODO(t)" "⚠️ IN WORK(w)" "|" "✔ DONE(d)" "✘ CANCELED(c)")))
+     (use-package org-bullets
+       :config
+       (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
    #+END_SRC
 ** Latex exports
    #+BEGIN_SRC emacs-lisp
-                                             ; Configuration des exports d'org-mode vers PDF
-     (require 'ox-latex)
-                                             ;Empecher le carctère _ d'etre traduit par une équation
-     (setq org-export-with-sub-superscripts nil)
-                                             ; Configuration des marges
-     (add-to-list 'org-latex-packages-alist '("letterpaper, portrait, lmargin=1in, rmargin=1in, bmargin=1in, tmargin=1in" "geometry"))
-                                             ; Configuration de la mise en page du code
-                                             ;ajout du package minted dans les entete
-     (add-to-list 'org-latex-packages-alist '("" "minted"))
-                                             ;selection de minted comme environnement pour les blocs de code source
-     (setq org-latex-listings 'minted)
-                                             ;ajout d'obtion à l'environement de minted
-     (setq org-latex-minted-options
-          '(("breaklines")( "linenos")( "frame=lines")( "framesep=2mm")))
-     (setq org-latex-pdf-process
-           '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-             "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-             "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+					     ; Configuration des exports d'org-mode vers PDF
+     (use-package ox-latex
+       :config
+					     ;Empecher le carctère _ d'etre traduit par une équation
+       (setq org-export-with-sub-superscripts nil)
+					     ; Configuration des marges
+       (add-to-list 'org-latex-packages-alist '("letterpaper, portrait, lmargin=1in, rmargin=1in, bmargin=1in, tmargin=1in" "geometry"))
+					     ; Configuration de la mise en page du code
+					     ;ajout du package minted dans les entete
+       (add-to-list 'org-latex-packages-alist '("" "minted"))
+					     ;selection de minted comme environnement pour les blocs de code source
+       (setq org-latex-listings 'minted)
+					     ;ajout d'obtion à l'environement de minted
+       (setq org-latex-minted-options
+	     '(("breaklines")( "linenos")( "frame=lines")( "framesep=2mm")))
+       (setq org-latex-pdf-process
+	     '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+	       "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+	       "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
    #+END_SRC
