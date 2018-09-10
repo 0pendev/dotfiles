@@ -1,24 +1,9 @@
-* Use-package
-  #+BEGIN_SRC emacs-lisp
-    (eval-when-compile
-      (require 'use-package))
-  #+END_SRC
 * Repositories
   We add different repositories.
   #+BEGIN_SRC emacs-lisp
     (require 'package)
-    (add-to-list 'package-archives
-		 '("melpa" . "http://melpa.org/packages/") t)
-  #+END_SRC
-* Setting up UTF-8
-  #+BEGIN_SRC emacs-lisp
-    (setq locale-coding-system 'utf-8)
-    (set-terminal-coding-system 'utf-8)
-    (set-keyboard-coding-system 'utf-8)
-    (set-selection-coding-system 'utf-8)
-    (prefer-coding-system 'utf-8)
-    (when (display-graphic-p)
-       (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
+    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+    (package-initialize)
   #+END_SRC
 * Dependencies
   The following code will check if all dependencies are installed and ask to install them if they are not.
@@ -36,9 +21,25 @@
 	(package-refresh-contents))
 
     (defun install-dependencies ()
-      (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'elscreen 'emmet-mode 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'org-kanban 'spaceline 'spaceline-all-the-icons 'use-package 'yasnippet 'yasnippet-snippets 'web-mode)
+      (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'elscreen 'emmet-mode 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'org-kanban 'use-package 'yasnippet 'yasnippet-snippets 'web-mode)
       (package-initialize))
 
+    (install-dependencies)
+  #+END_SRC
+* Use-package
+  #+BEGIN_SRC emacs-lisp
+    (eval-when-compile
+      (require 'use-package))
+  #+END_SRC
+* Setting up UTF-8
+  #+BEGIN_SRC emacs-lisp
+    (setq locale-coding-system 'utf-8)
+    (set-terminal-coding-system 'utf-8)
+    (set-keyboard-coding-system 'utf-8)
+    (set-selection-coding-system 'utf-8)
+    (prefer-coding-system 'utf-8)
+    (when (display-graphic-p)
+       (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
   #+END_SRC
 * UI/UX
 ** Modification de l'interface
