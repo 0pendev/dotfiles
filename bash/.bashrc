@@ -32,3 +32,7 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 # Pip binary path
 export PATH=$PATH:$HOME/.local/bin
 
+# Just useless stuff I like
+if hash neofetch 2>/dev/null; then
+    neofetch
+fi
