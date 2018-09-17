@@ -1,5 +1,7 @@
 ;;; init.el --- Just loading the real thing
 
+;;; Fuck that beep sound
+(setq ring-bell-function 'ignore)
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
