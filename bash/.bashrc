@@ -21,7 +21,7 @@ else
     if [[ $OLD ]];then
 	PS1="[\u@\h \W]\n"$'\u2937'" "
     else
-	PS1="[\[\e]0;\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]] "
+	export PS1="[\[\e[36m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[36m\]\h\[\e[m\] \[\e[35m\]\W\[\e[m\]\[\e[37m\]]\[\e[m\]\[\e[32m\] \[\e[m\] "
     fi
 fi
 
