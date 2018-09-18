@@ -21,7 +21,7 @@
 	(package-refresh-contents))
 
     (defun install-dependencies ()
-      (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'elscreen 'emmet-mode 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'org-kanban 'use-package 'yasnippet 'yasnippet-snippets 'web-mode)
+      (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'elscreen 'emmet-mode 'fancy-battery 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'org-kanban 'use-package 'yasnippet 'yasnippet-snippets 'web-mode)
       (package-initialize))
 
     (install-dependencies)
@@ -192,5 +192,6 @@
       :ensure t
       :config
       (require 'exwm-config)
-      (exwm-config-default))
+      (exwm-config-default)
+      (fancy-battery-mode))
   #+END_SRC
