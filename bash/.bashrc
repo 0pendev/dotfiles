@@ -9,20 +9,11 @@ if [[ $SCREEN ]];then
 	screen -xRR session_name
     fi
 fi
-if [[ $POWERLINE ]]; then
-    function _update_ps1() {
-  	PS1="$(~/go/bin/powerline-go -error $?)\n"$'\u2937'" "
-    }
 
-    if [ "$TERM" != "linux" ]; then
-    	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-    fi
+if [[ $OLD ]];then
+    PS1="[\u@\h \W]\n"$'\u2937'" "
 else
-    if [[ $OLD ]];then
-	PS1="[\u@\h \W]\n"$'\u2937'" "
-    else
-        export PS1="╭─ [\[\e[36m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[36m\]\h\[\e[m\] \[\e[35m\]\W\[\e[m\]]\n│\n╰─── "
-    fi
+    export PS1="\n╭─ [\[\e[36m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[36m\]\h\[\e[m\] \[\e[35m\]\W\[\e[m\]]\n│\n╰─── "
 fi
 
 # Golang configuration
