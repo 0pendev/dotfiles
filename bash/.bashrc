@@ -21,7 +21,7 @@ else
     if [[ $OLD ]];then
 	PS1="[\u@\h \W]\n"$'\u2937'" "
     else
-        export PS1="[\[\e[36m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[36m\]\h\[\e[m\] \[\e[35m\]\W\[\e[m\]] "
+        export PS1="╭─ [\[\e[36m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[36m\]\h\[\e[m\] \[\e[35m\]\W\[\e[m\]]\n│\n╰─── "
     fi
 fi
 
