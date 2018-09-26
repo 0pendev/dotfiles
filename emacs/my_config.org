@@ -21,7 +21,7 @@
 	(package-refresh-contents))
 
     (defun install-dependencies ()
-      (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'elscreen 'emmet-mode 'fancy-battery 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'org-kanban 'use-package 'yasnippet 'yasnippet-snippets 'web-mode)
+      (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'doom-modeline 'elscreen 'emmet-mode 'fancy-battery 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'org-kanban 'use-package 'yasnippet 'yasnippet-snippets 'web-mode)
       (package-initialize))
 
     (install-dependencies)
@@ -50,6 +50,11 @@
      (scroll-bar-mode -1)
      (setq inhibit-startup-screen t)
    #+END_SRC
+** Transparency is nice
+   #+BEGIN_SRC emacs-lisp
+     (set-frame-parameter (selected-frame) 'alpha '(85 . 50))
+     (add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+   #+END_SRC
 ** Neotree
    NeoTree is a package that give us a quick view of our tree structure. It is common tool amongs modern editors. We toggle it with the [f8] key.
    #+BEGIN_SRC emacs-lisp
@@ -57,6 +62,13 @@
 	  :config
 	  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 	  (global-set-key [f8] 'neotree-toggle))
+   #+END_SRC*
+** Modeline
+   #+BEGIN_SRC emacs-lisp
+     (use-package doom-modeline
+	   :ensure t
+	   :defer t
+	   :hook (after-init . doom-modeline-init))
    #+END_SRC
 * Programmation
 ** Général
