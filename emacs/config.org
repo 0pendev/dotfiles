@@ -21,7 +21,7 @@
 	(package-refresh-contents))
 
     (defun install-dependencies ()
-      (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'doom-modeline 'elscreen 'emmet-mode 'fancy-battery 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'org-kanban 'use-package 'yasnippet 'yasnippet-snippets 'web-mode)
+      (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'doom-modeline 'elscreen 'emmet-mode 'fancy-battery 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'use-package 'yasnippet 'yasnippet-snippets 'web-mode)
       (package-initialize))
 
     (install-dependencies)
@@ -166,7 +166,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package org
        :config
-       (add-hook 'org-mode-hook 'visual-line-mode)
+       (add-hook 'org-mode-hook 'auto-fill-mode)
        (setq org-src-fontify-natively t)
        (setq org-todo-keywords '((sequence "☛ TODO(t)" "⚠️ IN WORK(w)" "|" "✔ DONE(d)" "✘ CANCELED(c)"))))
    #+END_SRC
@@ -180,6 +180,7 @@
    #+BEGIN_SRC emacs-lisp
 					     ; Configuration des exports d'org-mode vers PDF
      (use-package ox-latex
+       :after (org)
        :config
 					     ;Empecher le carctère _ d'etre traduit par une équation
        (setq org-export-with-sub-superscripts nil)
