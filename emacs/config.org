@@ -166,9 +166,15 @@
                     '(;; ANSI
                       "https://www.ssi.gouv.fr/feed/actualite/"
                       "https://www.ssi.gouv.fr/feed/publication/"
+		      "https://www.ssi.gouv.fr/feed/qualification/"
+		      "https://www.ssi.gouv.fr/feed/certification_cc/"
+		      "https://www.ssi.gouv.fr/feed/certification_cspn/"
+		      "https://www.ssi.gouv.fr/feed/guide/"
                       ;;CoreOS
                       "https://twitrss.me/twitter_user_to_rss/?user=coreos"
                       "https://twitrss.me/twitter_user_to_rss/?user=CoreOSSecurity"
+		      ;;Fedora
+		      "https://fedoramagazine.org/feed/"
                       ;;OpenSuse
                       "https://news.opensuse.org/feed/"
                       ;;Hacker News
