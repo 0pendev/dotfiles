@@ -12,12 +12,9 @@ alias gitll="git pull"
 alias ll="ls -l"
 alias la="ls -la"
 # Zipper aliases
-alias zypi="zypper install"
-alias zypr="zypper remove"
-alias zypu="zypper update"
-# Aptitude aliases
-alias apti="aptitude install"
-alias aptr="aptitude remove"
-alias aptu="aptitude update && aptitude upgrade"
+alias zyps="zypper search"
+alias zypi="sudo zypper install"
+alias zypr="sudo zypper remove --clean-deps"
+alias zypu="sudo zypper update"
 # Reddit on terminal is awesome
 alias reddit="rtv"
