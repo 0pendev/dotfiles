@@ -184,8 +184,9 @@
      (use-package org
        :config
        (add-hook 'org-mode-hook 'auto-fill-mode)
+       (add-hook 'org-mode-hook 'writeroom-mode)
        (setq org-src-fontify-natively t)
-       (setq org-todo-keywords '((sequence "☛ TODO(t)" "⚠️ IN WORK(w)" "|" "✔ DONE(d)" "✘ CANCELED(c)"))))
+       (setq org-todo-keywords '((sequence "TODO(t)" "IN WORK(w)" "|" "DONE(d)" "CANCELED(c)"))))
    #+END_SRC
    We configure some pretty bullet points
    #+BEGIN_SRC emacs-lisp

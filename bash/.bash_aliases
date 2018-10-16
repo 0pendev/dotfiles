@@ -15,6 +15,6 @@ alias la="ls -la"
 alias zyps="zypper search"
 alias zypi="sudo zypper install"
 alias zypr="sudo zypper remove --clean-deps"
-alias zypu="sudo zypper update"
+alias zypu="sudo zypper dup"
 # Reddit on terminal is awesome
 alias reddit="rtv"
