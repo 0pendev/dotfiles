@@ -20,22 +20,3 @@
 
 ;; load up the main file
 (org-babel-load-file (expand-file-name "config.org" dotfiles-dir))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (apropospriate-dark)))
- '(custom-safe-themes
-   (quote
-    ("5a0eee1070a4fc64268f008a4c7abfda32d912118e080e18c3c865ef864d1bea" default)))
- '(delete-selection-mode nil)
- '(package-selected-packages
-   (quote
-    (focus exwm writeroom-mode web-mode yasnippet-snippets use-package org-bullets neotree markdown-mode js2-mode gradle-mode go-snippets fancy-battery emmet-mode elfeed elscreen doom-modeline company-jedi company-irony company-go company-irony-c-headers company-c-headers company all-the-icons apropospriate-theme))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
