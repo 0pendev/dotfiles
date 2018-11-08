@@ -1,1 +1,4 @@
-*~
+emacs/*
+!emacs/config.org
+!emacs/init.el
+!emacs/minimalist.el

@@ -2,7 +2,15 @@
   We add different repositories.
   #+BEGIN_SRC emacs-lisp
     (require 'package)
-    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+    (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
     (package-initialize)
   #+END_SRC
 * Dependencies
@@ -21,7 +29,7 @@
 	(package-refresh-contents))
 
     (defun install-dependencies ()
-      (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'doom-modeline 'elscreen 'elfeed 'emmet-mode 'fancy-battery 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'use-package 'yasnippet 'yasnippet-snippets 'web-mode)
+      (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'doom-modeline 'elfeed 'emmet-mode 'fancy-battery 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'use-package 'yasnippet 'yasnippet-snippets 'web-mode 'writeroom-mode)
       (package-initialize))
 
     (install-dependencies)
@@ -53,7 +61,7 @@
 ** Neotree
    NeoTree is a package that give us a quick view of our tree structure. It is common tool amongs modern editors. We toggle it with the [f8] key.
    #+BEGIN_SRC emacs-lisp
-     (use-package neotree
+     (use-package neotree-mode
 	  :config
 	  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 	  (global-set-key [f8] 'neotree-toggle))
