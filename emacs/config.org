@@ -29,7 +29,7 @@
 	(package-refresh-contents))
 
     (defun install-dependencies ()
-      (ensure-package-installed 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'doom-modeline 'elfeed 'emmet-mode 'fancy-battery 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'use-package 'yasnippet 'yasnippet-snippets 'web-mode 'writeroom-mode)
+      (ensure-package-installed 'aggressive-fill-paragraph 'apropospriate-theme 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'doom-modeline 'elfeed 'emmet-mode 'fancy-battery 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'use-package 'yasnippet 'yasnippet-snippets 'web-mode 'writeroom-mode)
       (package-initialize))
 
     (install-dependencies)
@@ -191,7 +191,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package org
        :config
-       (add-hook 'org-mode-hook 'auto-fill-mode)
+       (add-hook 'org-mode-hook 'aggressive-fill-paragraph-mode)
        (add-hook 'org-mode-hook 'writeroom-mode)
        (setq org-src-fontify-natively t)
        (setq org-todo-keywords '((sequence "TODO(t)" "IN WORK(w)" "|" "DONE(d)" "CANCELED(c)"))))
