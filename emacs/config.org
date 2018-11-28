@@ -225,12 +225,3 @@
 	       "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
 	       "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
    #+END_SRC
-* EXWM
-  #+BEGIN_SRC emacs-lisp
-    (use-package exwm
-      :ensure t
-      :config
-      (require 'exwm-config)
-      (exwm-config-default)
-      (fancy-battery-mode))
-  #+END_SRC
