@@ -58,20 +58,20 @@
      (scroll-bar-mode -1)
      (setq inhibit-startup-screen t)
    #+END_SRC
-** Neotree
-   NeoTree is a package that give us a quick view of our tree structure. It is common tool amongs modern editors. We toggle it with the [f8] key.
-   #+BEGIN_SRC emacs-lisp
-     (use-package neotree-mode
-	  :config
-	  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-	  (global-set-key [f8] 'neotree-toggle))
-   #+END_SRC*
 ** Modeline
    #+BEGIN_SRC emacs-lisp
      (use-package doom-modeline
 	   :ensure t
 	   :defer t
 	   :hook (after-init . doom-modeline-init))
+   #+END_SRC
+** Neotree
+   NeoTree is a package that give us a quick view of our tree structure. It is common tool amongs modern editors. We toggle it with the [f8] key.
+   #+BEGIN_SRC emacs-lisp
+     (use-package neotree
+       :config
+       (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+       (global-set-key [f8] 'neotree-toggle))
    #+END_SRC
 * Programmation
 ** Général
