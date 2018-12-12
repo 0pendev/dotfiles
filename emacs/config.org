@@ -192,7 +192,6 @@
      (use-package org
        :config
        (add-hook 'org-mode-hook 'aggressive-fill-paragraph-mode)
-       (add-hook 'org-mode-hook 'writeroom-mode)
        (setq org-src-fontify-natively t)
        (setq org-todo-keywords '((sequence "TODO(t)" "IN WORK(w)" "|" "DONE(d)" "CANCELED(c)"))))
    #+END_SRC
