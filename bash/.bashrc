@@ -5,7 +5,7 @@ tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | s
 
 # Export configuration for my org-files
 
-export(){
+org2pdf(){
     pandoc $1.org -o $1.pdf --template eisvogel --number-sections
 }
 
