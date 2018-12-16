@@ -1,0 +1,3 @@
+[submodule "pandoc/pandoc-latex-template"]
+	path = pandoc/pandoc-latex-template
+	url = https://github.com/Wandmalfarbe/pandoc-latex-template
