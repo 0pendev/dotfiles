@@ -1,5 +1,4 @@
-* Repositories
-  We add different repositories.
+* Melpa default configuration
   #+BEGIN_SRC emacs-lisp
     (require 'package)
     (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -14,16 +13,14 @@
     (package-initialize)
   #+END_SRC
 * Dependencies
-  The following code will check if all dependencies are installed and ask to install them if they are not.
   #+BEGIN_SRC emacs-lisp
     (defun ensure-package-installed (&rest packages)
-	(mapcar
-	 (lambda (package)
-	   ;; (package-installed-p 'evil)
-	   (if (package-installed-p package)
-	       nil
-	     (package-install package)))
-	 packages))
+      (mapcar
+       (lambda (package)
+	 (if (package-installed-p package)
+	     nil
+	   (package-install package)))
+       packages))
 
     (or (file-exists-p package-user-dir)
 	(package-refresh-contents))
@@ -50,8 +47,7 @@
        (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
   #+END_SRC
 * UI/UX
-** Modification de l'interface
-   We get rid of all this gui non-sense.
+** As simple as possible
    #+BEGIN_SRC emacs-lisp
      (menu-bar-mode -1)
      (tool-bar-mode -1)
@@ -66,7 +62,6 @@
 	   :hook (after-init . doom-modeline-init))
    #+END_SRC
 ** Neotree
-   NeoTree is a package that give us a quick view of our tree structure. It is common tool amongs modern editors. We toggle it with the [f8] key.
    #+BEGIN_SRC emacs-lisp
      (use-package neotree
        :config
@@ -75,24 +70,20 @@
    #+END_SRC
 * Programmation
 ** Général
-*** Autocomplétion
-    We start company-backend to add completion for some specific languages.
-    We bind company-complete whith [tab] when company-mode is loaded. It will start the completion manually.
+*** Autocompletion
     #+BEGIN_SRC emacs-lisp
       (use-package company
 	:config
 	(define-key company-mode-map [C-tab] 'company-complete))
     #+END_SRC
 *** Code snippets
-    For snippets we use yasnippet and yasnippet-snippets (both from melpa).
     #+BEGIN_SRC emacs-lisp
       (use-package yasnippet
 	:config
 	(yas-global-mode 1))
     #+END_SRC
 ** C/C++
-*** Autocomplétion
-   We add completion for the headers by adding company-c-headers backend. And we start it at the load of c-mode.
+*** Autocompletion
    #+BEGIN_SRC emacs-lisp
      (use-package irony
        :after (company)
@@ -105,15 +96,11 @@
     *Installed clang on the machine. It will be used by company-mode.*
 ** HTML
 *** Emmet-mode
-    Emmet-mode is a tool that helps you writte HTML code faster.
-    We initialize it when html-mode starts.
     #+BEGIN_SRC emacs-lisp
       (add-hook 'html-mode-hook 'emmet-mode)
     #+END_SRC
 ** Javascript
 *** js2-mode
-    We start company-mode when js2 mode is loaded.
-    The js2 mode is a mode to edit javascript. We force emacs to use it over js-mode.
     #+BEGIN_SRC emacs-lisp
       (use-package js2-mode
 	:after (company)
@@ -123,7 +110,6 @@
     #+END_SRC
 ** JEE
 *** Web-mode
-    Web-mode and emmet-mode work great together to build jsp pages. Let's start them when we open a jsp file:
     #+BEGIN_SRC emacs-lisp
       (use-package web-mode
 	:after (company)
@@ -132,9 +118,7 @@
 	(add-hook 'web-mode 'company-mode))
     #+END_SRC
 ** Go
-*** Autocomplétion
-    We add the go backend for company-mode. We only load it when go-mode is loaded.
-    We start company-mode when the go-mode is loaded.
+*** Autocompletion
     #+BEGIN_SRC emacs-lisp
       (use-package company-go
 	:config
@@ -155,7 +139,6 @@
     #+END_SRC
 ** JAVA
 *** Gradle
-    We configure gradle-mode to start when opening Java files.
     #+BEGIN_SRC emacs-lisp
       (use-package gradle-mode
 	:config
@@ -163,40 +146,35 @@
     #+END_SRC
 * Elfeed
   #+BEGIN_SRC emacs-lisp
-            (use-package elfeed
-              :config
-              (setq elfeed-feeds
-                    '(;; ANSI
-                      "https://www.ssi.gouv.fr/feed/actualite/"
-                      "https://www.ssi.gouv.fr/feed/publication/"
-		      "https://www.ssi.gouv.fr/feed/qualification/"
-		      "https://www.ssi.gouv.fr/feed/certification_cc/"
-		      "https://www.ssi.gouv.fr/feed/certification_cspn/"
-		      "https://www.ssi.gouv.fr/feed/guide/"
-                      ;;CoreOS
-                      "https://twitrss.me/twitter_user_to_rss/?user=coreos"
-                      "https://twitrss.me/twitter_user_to_rss/?user=CoreOSSecurity"
-		      ;;Fedora
-		      "https://fedoramagazine.org/feed/"
-                      ;;OpenSuse
-                      "https://news.opensuse.org/feed/"
-                      ;;Hacker News
-                      "https://news.ycombinator.com/rss")))
+    (use-package elfeed
+      :config
+      (setq elfeed-feeds
+	    '(;; ANSSI
+	      "https://www.ssi.gouv.fr/feed/actualite/"
+	      "https://www.ssi.gouv.fr/feed/publication/"
+	      "https://www.ssi.gouv.fr/feed/qualification/"
+	      "https://www.ssi.gouv.fr/feed/certification_cc/"
+	      "https://www.ssi.gouv.fr/feed/certification_cspn/"
+	      "https://www.ssi.gouv.fr/feed/guide/"
+	      ;;CoreOS
+	      "https://twitrss.me/twitter_user_to_rss/?user=coreos"
+	      "https://twitrss.me/twitter_user_to_rss/?user=CoreOSSecurity"
+	      ;;Fedora
+	      "https://fedoramagazine.org/feed/"
+	      ;;OpenSuse
+	      "https://news.opensuse.org/feed/"
+	      ;;Hacker News
+	      "https://news.ycombinator.com/rss")))
   #+END_SRC
 * Org-mode
-** Display
-   First we add line wrapping in org-mode. It will be easier to write/read notes.
-   In a lot of org document I have code. So the next line will do the syntax highlighting in org-mode.
-   Finally we configure fancy TODO icons.
+** TODOs
    #+BEGIN_SRC emacs-lisp
      (use-package org
        :config
        (add-hook 'org-mode-hook 'aggressive-fill-paragraph-mode)
        (setq org-src-fontify-natively t)
        (setq org-todo-keywords '((sequence "TODO(t)" "IN WORK(w)" "|" "DONE(d)" "CANCELED(c)"))))
-   #+END_SRC
-   We configure some pretty bullet points
-   #+BEGIN_SRC emacs-lisp
+
      (use-package org-bullets
        :config
        (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
@@ -224,3 +202,14 @@
 	       "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
 	       "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
    #+END_SRC
+   
+* EXWM
+  #+BEGIN_SRC emacs-lisp
+    (if (y-or-n-p "Use exwm ? ")
+	(use-package exwm
+	  :ensure t
+	  :config
+	  (require 'exwm-config)
+	  (exwm-config-default)
+	  (fancy-battery-mode)))
+  #+END_SRC
