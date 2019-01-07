@@ -68,6 +68,12 @@
        (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
        (global-set-key [f8] 'neotree-toggle))
    #+END_SRC
+** zlc
+   #+BEGIN_SRC emacs-lisp
+     (use-package zlc
+       :config
+       (zlc-mode t))
+   #+END_SRC
 * Programmation
 ** Général
 *** Autocompletion
@@ -121,10 +127,13 @@
 *** Autocompletion
     #+BEGIN_SRC emacs-lisp
       (use-package company-go
+	:after (company)
 	:config
+	(add-hook 'before-save-hook 'gofmt-before-save)
+	(add-to-list 'company-backends 'company-go)
 	(add-hook 'go-mode-hook 'company-mode))
     #+END_SRC
-    *It needs the golang-go and gocode deamon to be installed on the machine.*
+    /It needs the gocode deamon to be installed on the machine./
 *** Snippets
     We install the go-snippets package.
 ** Python
