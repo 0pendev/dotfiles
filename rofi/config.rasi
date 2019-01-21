@@ -53,10 +53,10 @@ configuration {
 /*	click-to-exit: true;*/
 /*	show-match: true;*/
 /*	theme: ;*/
-	color-normal: "argb:FF070E15, #E0DACF, #070E15, #725f8f, #070E15";
+	color-normal: "argb:FF070E15, #E0DACF, #070E15, #00bcd4, #070E15";
 	color-urgent: "argb:FF070E15, #8A7766, #070E15, #8A7766, #E0DACF";
-	color-active: "argb:FF070E15, #E0DACF, #070E15, #725f8f, #070E15";
-	color-window: "argb:FF070E15, #070E15, #725f8f";
+	color-active: "argb:FF070E15, #E0DACF, #070E15, #00bcd4, #070E15";
+	color-window: "argb:FF070E15, #070E15, #00bcd4";
 /*	max-history-size: 25;*/
 /*	combi-hide-mode-prefix: false;*/
 /*	matching-negate-char: '-' /* unsupported */;*/

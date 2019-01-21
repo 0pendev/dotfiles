@@ -65,13 +65,17 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -113,7 +117,7 @@ bar{
 	status_command i3status
 	colors{
 		background #131c26
-		focused_workspace	#725f8f	#725f8f	#ffffff
+		focused_workspace	#00bcd4	#00bcd4	#ffffff
 	}
 }
 
@@ -125,7 +129,7 @@ exec feh --bg-fill /home/opendev/Pictures/Luca\ Bravo.jpg
 bindsym $mod+l exec i3lock -c 000000
 
 # class                 border  bground text    indicator child_border
-client.focused          #725f8f #725f8f #FFFFFF #9B963C   #725f8f
+client.focused          #00bcd4 #00bcd4 #FFFFFF #9B963C   #00bcd4
 client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
 client.unfocused        #131c26 #131c26 #888888 #292D2E   #131c26
 client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
