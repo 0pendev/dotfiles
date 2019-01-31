@@ -26,7 +26,7 @@
 	(package-refresh-contents))
 
     (defun install-dependencies ()
-      (ensure-package-installed 'aggressive-fill-paragraph 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'doom-modeline 'doom-themes 'elfeed 'emmet-mode 'fancy-battery 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'use-package 'yasnippet 'yasnippet-snippets 'web-mode 'writeroom-mode)
+      (ensure-package-installed 'aggressive-fill-paragraph 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'doom-modeline 'doom-themes 'elfeed 'emmet-mode 'fancy-battery 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'python-docstring 'use-package 'yasnippet 'yasnippet-snippets 'web-mode 'writeroom-mode)
       (package-initialize))
 
     (install-dependencies)
@@ -138,14 +138,14 @@
 *** Snippets
     We install the go-snippets package.
 ** Python
-*** Autocomplétion
     #+BEGIN_SRC emacs-lisp
       (use-package python
 	:after (company)
 	:config
 	(setq python-shell-interpreter "python3")
 	(add-to-list 'company-backends '(company-jedi company-files))
-	(add-hook 'python-mode-hook 'company-mode))
+	(add-hook 'python-mode-hook 'company-mode)
+	(add-hook 'python-mode-hook 'python-docstring-mode))
     #+END_SRC
 ** JAVA
 *** Gradle
