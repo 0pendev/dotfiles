@@ -103,7 +103,7 @@ bar{
 # smart_borders on
 for_window [class="^.*"] border pixel 3
 # gaps inner 8
-exec --no-startup-id feh --bg-fill /home/opendev/Pictures/Luca\ Bravo.jpg
+exec --no-startup-id feh --bg-fill /home/opendev/Pictures/Photo\ by\ SpaceX.jpg
 bindsym $mod+l exec i3lock -c 000000
 # class                 border  bground text    indicator child_border
 client.focused          #00bcd4 #00bcd4 #FFFFFF #00bcd4   #00bcd4
@@ -121,8 +121,8 @@ exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id redshift-gtk
 # sound
 bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
-#bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
-#bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
-bindsym XF86AudioRaiseVolume exec "amixer set Master -q 5%+"
-bindsym XF86AudioLowerVolume exec "amixer set Master -q 5%-"
-
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
+#bindsym XF86AudioRaiseVolume exec "amixer set Master -q 5%+"
+#bindsym XF86AudioLowerVolume exec "amixer set Master -q 5%-"
+exec --no-startup-id setxkbmap -layout fr
