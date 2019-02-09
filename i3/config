@@ -1,32 +1,48 @@
+###
+# Title
+################################################################################
+# Comment
+#unused command
+
+###
+# Key configuration
+################################################################################
+
 # mod key
 set $mod Mod4
-# font
-font pango:DejaVu Sans Mono 8
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-# start a terminal
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'End X session ?' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+t exec sakura
-# kill focused window
-bindsym $mod+k kill
-# start program launcher
+
+###
+# Program Launcher
+################################################################################
 bindsym $mod+d exec rofi -show run -theme
 bindsym $mod+Shift+d exec rofi -show drun -theme
 bindsym $mod+w exec rofi -show window -theme
-# change focus
+
+###
+# Windows
+################################################################################
+floating_modifier $mod
+bindsym $mod+k kill
+# focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-# move focused window
+bindsym $mod+q focus parent
+#bindsym $mod+d focus child
+# move
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-# split in horizontal orientation
+# split
 bindsym $mod+h split h
-# split in vertical orientation
 bindsym $mod+v split v
-# enter fullscreen mode for the focused container
+# fullscreen
 bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -34,14 +50,28 @@ bindsym $mod+z layout tabbed
 bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+space floating toggle
-# change focus between tiling / floating windows
 bindsym $mod+Shift+space focus mode_toggle
-# focus the parent container
-bindsym $mod+q focus parent
-# focus the child container
-#bindsym $mod+d focus child
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# resize 
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+###
+# Workspaces
+################################################################################
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -66,32 +96,11 @@ bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-bindsym $mod+r mode "resize"
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+
+###
+# Theming
+################################################################################
+font pango:DejaVu Sans Mono 8
 bar{
 	status_command i3status
 	colors{
@@ -99,30 +108,32 @@ bar{
 		focused_workspace	#00bcd4	#00bcd4	#ffffff
 	}
 }
-# theme
-# smart_borders on
 for_window [class="^.*"] border pixel 3
-# gaps inner 8
-exec --no-startup-id feh --bg-fill /home/opendev/Pictures/Photo\ by\ SpaceX.jpg
 bindsym $mod+l exec i3lock -c 000000
-# class                 border  bground text    indicator child_border
 client.focused          #00bcd4 #00bcd4 #FFFFFF #00bcd4   #00bcd4
 client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
 client.unfocused        #131c26 #131c26 #888888 #292D2E   #131c26
 client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 client.background       #FFFFFF
-# network applet is nice
-exec --no-startup-id nm-applet
-# fuck that bell
-exec --no-startup-id xset b off
-# brightness
-exec --no-startup-id xfce4-power-manager 
-# exec --no-startup-id redshift-gtk
-# sound
+#smart_borders on
+#gaps inner 8
+
+###
+# Sound configuration
+################################################################################
 bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
 bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
 #bindsym XF86AudioRaiseVolume exec "amixer set Master -q 5%+"
 #bindsym XF86AudioLowerVolume exec "amixer set Master -q 5%-"
+
+###
+# Startup
+################################################################################
 exec --no-startup-id setxkbmap -layout fr
+exec --no-startup-id xset b off
+exec --no-startup-id xfce4-power-manager 
+# exec --no-startup-id nm-applet
+# exec --no-startup-id feh --bg-fill /home/opendev/Pictures/Photo\ by\ SpaceX.jpg
+# exec --no-startup-id redshift-gtk
