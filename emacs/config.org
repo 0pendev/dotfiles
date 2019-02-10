@@ -26,7 +26,7 @@
 	(package-refresh-contents))
 
     (defun install-dependencies ()
-      (ensure-package-installed 'aggressive-fill-paragraph 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'doom-modeline 'doom-themes 'elfeed 'emmet-mode 'fancy-battery 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'python-docstring 'use-package 'yasnippet 'yasnippet-snippets 'web-mode 'writeroom-mode 'zlc)
+      (ensure-package-installed 'aggressive-fill-paragraph 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'doom-modeline 'doom-themes 'elfeed 'emmet-mode 'fancy-battery 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'python-docstring 'use-package 'yasnippet 'yasnippet-snippets 'web-mode 'writeroom-mode 'zlc 'zerodark-theme)
       (package-initialize))
 
     (install-dependencies)
