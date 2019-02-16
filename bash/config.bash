@@ -22,7 +22,7 @@ org2ensibs(){
 #export PS1="╭─ [\[\e[36m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[36m\]\h\[\e[m\] \[\e[35m\]\W\[\e[m\]] \$(__git_ps1 '(%s)')\n╰─── "
 
 # Golang configuration
-export DEFAULT_PATH = $PATH
+export DEFAULT_PATH=$PATH
 setgopath(){
 	export GOPATH=$1
 	export PATH=$DEFAULT_PATH:$GOPATH/bin
