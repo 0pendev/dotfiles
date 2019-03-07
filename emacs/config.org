@@ -137,6 +137,18 @@
     /It needs the gocode deamon to be installed on the machine./
 *** Snippets
     We install the go-snippets package.
+*** GOPATH
+    #+BEGIN_SRC emacs-lisp
+      (defun setgopath(path)
+	 "Used in my golang workflow"
+	 (interactive "sPath: \n")
+	 (setenv "GOPATH" path)
+	 (setenv "PATH"
+		 (concat
+		  (getenv "PATH") ":"
+		  (getenv "GOPATH")))
+	 (message "Set $GOPATH to : %s" path))
+    #+END_SRC
 ** Python
     #+BEGIN_SRC emacs-lisp
       (use-package python
