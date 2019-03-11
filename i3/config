@@ -123,11 +123,11 @@ client.background       #FFFFFF
 ###
 # Sound configuration
 ################################################################################
-bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
-#bindsym XF86AudioRaiseVolume exec "amixer set Master -q 5%+"
-#bindsym XF86AudioLowerVolume exec "amixer set Master -q 5%-"
+#bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
+#bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
+#bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
+bindsym XF86AudioRaiseVolume exec "amixer set Master -q 5%+"
+bindsym XF86AudioLowerVolume exec "amixer set Master -q 5%-"
 
 ###
 # Startup
@@ -135,6 +135,6 @@ bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
 exec --no-startup-id setxkbmap -layout fr
 exec --no-startup-id xset b off
 exec --no-startup-id xfce4-power-manager 
-# exec --no-startup-id nm-applet
-# exec --no-startup-id feh --bg-fill /home/opendev/Pictures/Photo\ by\ SpaceX.jpg
-# exec --no-startup-id redshift-gtk
+#exec --no-startup-id nm-applet
+#exec --no-startup-id feh --bg-fill /home/opendev/Pictures/Photo\ by\ SpaceX.jpg
+#exec --no-startup-id redshift-gtk
