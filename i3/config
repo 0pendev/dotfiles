@@ -13,11 +13,12 @@ set $mod Mod4
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'End X session ?' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+t exec sakura
 
 ###
 # Program Launcher
 ################################################################################
+bindsym $mod+t exec sakura
+bindsym $mod+c exec emacs
 bindsym $mod+d exec rofi -show run -theme
 bindsym $mod+Shift+d exec rofi -show drun -theme
 bindsym $mod+w exec rofi -show window -theme
