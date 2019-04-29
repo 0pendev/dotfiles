@@ -93,11 +93,14 @@
 *** Autocompletion
    #+BEGIN_SRC emacs-lisp
      (use-package irony
-       :after (company)
+       :after company
        :config
-       (add-to-list 'company-backends 'company-c-headers 'company-irony 'company-irony-c-headers)
-       (add-hook 'c-mode-hook 'company-mode)
-       (add-hook 'c-mode-hook 'irony-mode))
+       (add-to-list 'company-backends 'company-c-headers) 
+       (add-to-list 'company-backends 'company-irony)
+       (add-to-list 'company-backends 'company-irony-c-headers)
+       (add-hook 'c-mode-hook (lambda()
+				(company-mode)
+				(irony-mode))))
     #+END_SRC
 *** Compilation
     *Installed clang on the machine. It will be used by company-mode.*
@@ -107,7 +110,6 @@
       (add-hook 'html-mode-hook 'emmet-mode)
     #+END_SRC
 ** Javascript
-*** js2-mode
     #+BEGIN_SRC emacs-lisp
       (use-package js2-mode
 	:after (company)
@@ -152,12 +154,14 @@
 ** Python
     #+BEGIN_SRC emacs-lisp
       (use-package python
-	:after (company)
+	:after company
 	:config
 	(setq python-shell-interpreter "python3")
-	(add-to-list 'company-backends '(company-jedi company-files))
-	(add-hook 'python-mode-hook 'company-mode)
-	(add-hook 'python-mode-hook 'python-docstring-mode))
+	(add-to-list 'company-backends 'company-jedi)
+	(add-to-list 'company-backends 'company-files)
+	(add-hook 'python-mode-hook (lambda ()
+				      (company-mode)
+				      (python-docstring-mode))))
     #+END_SRC
 ** JAVA
 *** Gradle
@@ -230,4 +234,3 @@
 	       "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
 	       "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")))
    #+END_SRC
-   
