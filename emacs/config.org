@@ -26,7 +26,7 @@
 	(package-refresh-contents))
 
     (defun install-dependencies ()
-      (ensure-package-installed 'aggressive-fill-paragraph 'all-the-icons 'company 'company-c-headers 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'doom-modeline 'doom-themes 'elfeed 'emmet-mode 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'org-re-reveal 'python-docstring 'use-package 'yasnippet 'yasnippet-snippets 'web-mode 'writeroom-mode 'zlc 'zerodark-theme)
+      (ensure-package-installed 'aggressive-fill-paragraph 'all-the-icons 'company 'company-c-headers 'company-emacs-eclim 'company-irony-c-headers 'company-go 'company-irony 'company-jedi 'doom-modeline 'doom-themes 'eclim 'elfeed 'emmet-mode 'go-snippets 'gradle-mode 'irony 'js2-mode 'markdown-mode 'neotree 'org-bullets 'org-re-reveal 'python-docstring 'use-package 'yasnippet 'yasnippet-snippets 'web-mode 'writeroom-mode 'zlc 'zerodark-theme)
       (package-initialize))
 
     (install-dependencies)
@@ -168,7 +168,21 @@
     #+BEGIN_SRC emacs-lisp
       (use-package gradle-mode
 	:config
+	:disabled
 	(add-hook 'java-mode-hook 'gradle-mode))
+    #+END_SRC
+*** Eclim
+    #+BEGIN_SRC emacs-lisp
+      (defun eclim-config()
+	((company)
+	 (setq eclimd-autostart t)))
+      (use-package eclim
+	:config
+	(custom-set-variables
+	  '(eclim-eclipse-dirs '("~/Softwares/Eclipse/eclipse/eclipse"))
+	  '(eclim-executable ".p2/pool/plugins/org.eclim_2.8.0/bin/eclim"))
+	(company-emacs-eclim-setup)
+	(add-hook 'java-mode-hook 'eclim-config))
     #+END_SRC
 * Elfeed
   #+BEGIN_SRC emacs-lisp
