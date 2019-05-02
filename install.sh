@@ -1,6 +1,6 @@
 #!/bin/sh
 sudo zypper dup
-sudo zypper in breeze5-cursors metatheme-adapta-common wget chromium emacs i3 rofi sakura i3status git zsh
+sudo zypper in papirus-icon-theme breeze5-cursors metatheme-adapta-common wget chromium emacs i3 rofi sakura i3status git zsh
 mkdir ~/Documents
 cd ~/Documents
 git clone http://github.com/0pendev/dotfiles
