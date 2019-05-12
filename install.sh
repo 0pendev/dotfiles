@@ -19,10 +19,10 @@ ln -s ~/Documents/dotfiles/i3status ~/.config
 ln -s ~/Documents/dotfiles/rofi ~/.config
 ln -s ~/Documents/dotfiles/sakura ~/.config
 ln -s ~/Documents/dotfiles/xorg/.xinitrc ~/.xinitrc
-sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 mkdir ~/Downloads
 cd ~/Downloads
 git clone https://github.com/domtronn/all-the-icons.el
 echo "Now install the fonts and configure the theme."
 git config --global user.email "contact@ffreitas.io"
 git config --global user.name "0pendev" 
+sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
