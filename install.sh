@@ -1,12 +1,12 @@
 #!/bin/sh
 sudo zypper dup
-sudo zypper in -y\
+sudo zypper in\
  papirus-icon-theme breeze5-cursors metatheme-adapta-common\
  wget chromium emacs i3 rofi sakura i3status git zsh\
  gnome-font-viewer lxappearance lxrandr thunar\
  bluez xinit xorg-x11 xorg-x11-server htop keepassxc\
  telegram-desktop podman buildah python3-virtualenv\
- go
+ go xfce4-power-manager 
 sudo zypper in -t pattern fonts
 mkdir ~/Documents
 cd ~/Documents
