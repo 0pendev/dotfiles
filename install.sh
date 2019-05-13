@@ -6,8 +6,10 @@ sudo zypper in\
  gnome-font-viewer lxappearance lxrandr thunar\
  bluez xinit xorg-x11 xorg-x11-server htop keepassxc\
  telegram-desktop podman buildah python3-virtualenv\
- go xfce4-power-manager 
+ go xfce4-power-manager powertop 
 sudo zypper in -t pattern fonts
+sudo systemctl enable powertop
+sudo systemctl start powertop
 mkdir ~/Documents
 cd ~/Documents
 git clone http://github.com/0pendev/dotfiles
@@ -25,4 +27,5 @@ git clone https://github.com/domtronn/all-the-icons.el
 echo "Now install the fonts and configure the theme."
 git config --global user.email "contact@ffreitas.io"
 git config --global user.name "0pendev" 
+sudo echo "r0nd" > /etc/hostname
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
