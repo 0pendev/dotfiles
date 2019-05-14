@@ -6,7 +6,8 @@ sudo zypper in\
  gnome-font-viewer lxappearance lxrandr thunar\
  bluez xinit xorg-x11 xorg-x11-server htop keepassxc\
  telegram-desktop podman buildah python3-virtualenv\
- go xfce4-power-manager powertop xfce4-screenshooter 
+ go xfce4-power-manager powertop xfce4-screenshooter\
+ lxsession 
 sudo zypper in -t pattern fonts
 sudo systemctl enable powertop
 sudo systemctl start powertop
