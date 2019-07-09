@@ -1,0 +1,160 @@
+###
+# Key configuration
+################################################################################
+set $mod Mod4
+
+
+# mod key
+set $mod Mod4
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+###
+# Program Launcher
+################################################################################
+bindsym $mod+t exec sakura
+bindsym $mod+c exec emacs
+bindsym $mod+d exec rofi -show run -theme
+bindsym $mod+Shift+d exec rofi -show drun -theme
+bindsym $mod+w exec rofi -show window -theme
+
+###
+# Windows
+################################################################################
+floating_modifier $mod
+bindsym $mod+k kill
+# focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+q focus parent
+#bindsym $mod+d focus child
+# move
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+# split
+bindsym $mod+h split h
+bindsym $mod+v split v
+# fullscreen
+bindsym $mod+f fullscreen toggle
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
+bindsym $mod+e layout toggle split
+# toggle tiling / floating
+bindsym $mod+space floating toggle
+bindsym $mod+Shift+space focus mode_toggle
+# resize 
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+
+###
+# Workspaces
+################################################################################
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+# switch to workspace
+bindsym --to-code {
+	$mod+ampersand workspace 1
+	$mod+eacute workspace 2
+	$mod+quotedbl workspace 3
+	$mod+apostrophe workspace 4
+	$mod+parenleft workspace 5
+	$mod+egrave workspace 6
+	$mod+minus workspace 7
+	$mod+underscore workspace 8
+	$mod+ccedilla workspace 9
+	$mod+agrave workspace 10
+	$mod+Shift+ampersand move container to workspace 1
+	$mod+Shift+eacute move container to workspace 2
+	$mod+Shift+quotedbl move container to workspace 3
+	$mod+Shift+apostrophe move container to workspace 4
+	$mod+Shift+parenleft move container to workspace 5
+	$mod+Shift+egrave move container to workspace 6
+	$mod+Shift+minus move container to workspace 7
+	$mod+Shift+underscore move container to workspace 8
+	$mod+Shift+ccedilla move container to workspace 9
+	$mod+Shift+agrave move container to workspace 10
+}
+
+###
+# Theming
+################################################################################
+font pango:DejaVu Sans Mono 8
+default_border pixel 3
+
+bar {
+    status_command i3status
+    position top
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #32323200 #32323200 #5c5c5c
+    }
+}
+
+
+
+
+###
+# Sound configuration
+################################################################################
+#bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle"
+#bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
+#bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
+#bindsym XF86AudioMute exec "amixer set Master toggle"
+#bindsym XF86AudioRaiseVolume exec "amixer set Master -q 5%+"
+#bindsym XF86AudioLowerVolume exec "amixer set Master -q 5%-"
+
+###
+#
+################################################################################
+bindsym XF86MonBrightnessDown exec "brightnessctl -d intel_backlight s 5%-"
+bindsym XF86MonBrightnessUp exec "brightnessctl -d intel_backlight s 5%+"
+
+###
+# Startup
+################################################################################
+input 1:1:AT_Translated_Set_2_keyboard {
+    xkb_layout fr
+}
+
+input 2:14:ETPS/2_Elantech_Touchpad {
+      tap enabled
+      drag enabled
+      dwt enabled
+}
+
+input 1267:8303:ELAN_Touchscreen {
+      events disabled
+}
+
+include /etc/sway/config.d/*
