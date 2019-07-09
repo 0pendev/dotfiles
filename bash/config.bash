@@ -1,3 +1,12 @@
+# Screen configuration
+if [ "$(tty)" = "/dev/tty1" ]; then
+	exec sway
+fi
+
+if [ "$(tty)" = "/dev/tty2" ]; then
+        exec startx
+fi
+
 # Export configuration for my org-files
 org2pdf(){
     pandoc $1 -o $2 --template $3 --number-sections --listings

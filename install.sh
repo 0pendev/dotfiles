@@ -33,6 +33,7 @@ ln -s ~/Documents/dotfiles/emacs ~/.emacs.d
 mkdir ~/.config
 ln -s ~/Documents/dotfiles/i3status ~/.config
 ln -s ~/Documents/dotfiles/rofi ~/.config
+ln -s ~/Documents/dotfiles/sway ~/.config
 ln -s ~/Documents/dotfiles/sakura ~/.config
 ln -s ~/Documents/dotfiles/xorg/.xinitrc ~/.xinitrc
 log "Downloading all-the-icons"
