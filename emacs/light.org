@@ -61,29 +61,6 @@
        (add-hook 'ibuffer-sidebar-mode-hook 'hide-mode-line-mode)
        (global-set-key [f8] 'ibuffer-sidebar-toggle-sidebar))
    #+END_SRC
-** Tabs
-   #+BEGIN_QUOTE
-    (use-package centaur-tabs
-       :ensure t
-       :demand
-       :config
-       (centaur-tabs-mode t)
-       (centaur-tabs-headline-match)
-       (setq centaur-tabs-set-icons t)
-       (setq centaur-tabs-set-bar 'left)
-       (setq centaur-tabs-set-modified-marker t)
-       (setq centaur-tabs-set-close-button nil)
-       (setq centaur-tabs-style "bar")
-       :bind
-       ("C-<prior>" . centaur-tabs-backward)
-       ("C-<next>" . centaur-tabs-forward))
-   #+END_QUOTE
-** Key bindings
-   #+BEGIN_SRC emacs-lisp
-     (global-set-key (kbd "C-!") 'kill-this-buffer)
-     (global-set-key (kbd "C-<next>") 'next-buffer)
-     (global-set-key (kbd "C-<prior>") 'previous-buffer)
-   #+END_SRC
 * Org-mode
    #+BEGIN_SRC emacs-lisp
      (use-package org

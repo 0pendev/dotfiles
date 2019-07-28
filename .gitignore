@@ -1,4 +1,6 @@
 emacs/*
 !emacs/config.org
 !emacs/init.el
+!emacs/old.org
+!emacs/light.org
 !emacs/minimalist.el
