@@ -19,7 +19,7 @@ sudo zypper in\
      bluez xinit xorg-x11 xorg-x11-server htop keepassxc\
      telegram-desktop podman buildah python3-virtualenv\
      go xfce4-power-manager powertop xfce4-screenshooter\
-     lxsession sway evince brightnessctl
+     lxsession sway evince brightnessctl swaylock
 sudo zypper in -t pattern fonts
 log "Setting up powertop"
 sudo systemctl enable powertop
