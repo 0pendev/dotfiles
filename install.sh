@@ -13,13 +13,14 @@ log "Updating system"
 sudo zypper dup
 log "Installing graphical environment and development tools"
 sudo zypper in\
-     papirus-icon-theme breeze5-cursors metatheme-adapta-common\
+     paper-icon-theme metatheme-paper-common breeze5-cursors\
      wget chromium emacs i3 rofi sakura i3status git zsh\
      gnome-font-viewer lxappearance lxrandr nemo\
      bluez xinit xorg-x11 xorg-x11-server htop keepassxc\
      telegram-desktop podman buildah python3-virtualenv\
      go xfce4-power-manager powertop xfce4-screenshooter\
      lxsession sway evince brightnessctl swaylock
+
 sudo zypper in -t pattern fonts
 log "Setting up powertop"
 sudo systemctl enable powertop

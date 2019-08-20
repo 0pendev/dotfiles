@@ -164,8 +164,8 @@ bar {
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Lumiere'
-    gsettings set $gnome-schema icon-theme 'elementary'
+    gsettings set $gnome-schema gtk-theme 'Paper'
+    gsettings set $gnome-schema icon-theme 'Paper'
     gsettings set $gnome-schema cursor-theme 'Breeze Light'
 }
 # https://thomashunter.name/i3-configurator/
