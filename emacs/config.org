@@ -43,6 +43,13 @@
      (tool-bar-mode -1)
      (setq inhibit-startup-screen t)
    #+END_SRC
+** Dashboard
+   #+BEGIN_SRC emacs-lisp
+     (use-package dashboard
+       :ensure t
+       :config
+       (dashboard-setup-startup-hook))
+   #+END_SRC
 ** Modeline
    #+BEGIN_SRC emacs-lisp
      (use-package doom-modeline
@@ -84,6 +91,11 @@
      (global-set-key (kbd "C-<next>") 'next-buffer)
      (global-set-key (kbd "C-<prior>") 'previous-buffer)
    #+END_SRC
+** Doomthemes
+   #+BEGIN_SRC emacs-lisp
+     (use-package doom-themes
+       :ensure t)
+   #+END_SRC
 * Org-mode
    #+BEGIN_SRC emacs-lisp
      (use-package org
@@ -122,10 +134,11 @@
 ** Général
 *** Autocompletion
     #+BEGIN_SRC emacs-lisp
-      (use-package company
-	:ensure t
-	:config
-	(define-key company-mode-map [C-tab] 'company-complete))
+	    (use-package company
+	      :ensure t
+	      :config
+	      (define-key company-mode-map [C-tab] 'company-complete)
+	      (add-hook 'after-init-hook 'global-company-mode))
     #+END_SRC
 *** Code snippets
     #+BEGIN_SRC emacs-lisp
@@ -141,4 +154,38 @@
        :ensure t
        :config
        (add-hook 'html-mode-hook 'emmet-mode))
+   #+END_SRC
+** Golang
+   #+BEGIN_SRC emacs-lisp
+     (use-package go-eldoc
+       :ensure t)
+
+     (use-package go-mode
+       :ensure t
+       :after go-eldoc
+       :config
+       (defun go-mode-setup()
+	 (linum-mode 1)
+	 (go-eldoc-setup)
+	 (setq gofmt-command "goimports")
+	 (add-hook 'before-save-hook 'gofmt-before-save)
+	 (local-set-key (kbd "M-.") 'godef-jump)
+	 (setq compile-command "go build -v")
+	 (setq compilation-read-command nil)
+	 (define-key (current-local-map) "\C-c\C-c" 'compile)
+	 (local-set-key (kbd "M-,") 'compile))
+       (add-hook 'go-mode-hook 'go-mode-setup))
+
+     (use-package go-rename
+       :ensure t)
+
+     (use-package golint
+       :ensure t
+       :init
+       (add-to-list 'load-path (concat "~/go"  "/src/github.com/golang/lint/misc/emacs")))
+
+     (use-package go-complete
+       :ensure t
+       :config
+       (add-hook 'completion-at-point-functions 'go-complete-at-point))
    #+END_SRC

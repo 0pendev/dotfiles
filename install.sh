@@ -15,7 +15,7 @@ log "Installing graphical environment and development tools"
 sudo zypper in\
      paper-icon-theme metatheme-paper-common breeze5-cursors\
      wget chromium emacs i3 rofi sakura i3status git zsh\
-     gnome-font-viewer lxappearance lxrandr nemo\
+     gnome-font-viewer lxappearance lxrandr nautilus\
      bluez xinit xorg-x11 xorg-x11-server htop keepassxc\
      telegram-desktop podman buildah python3-virtualenv\
      go xfce4-power-manager powertop xfce4-screenshooter\

@@ -19,9 +19,9 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'End X session ?' -B 'Yes, ex
 ################################################################################
 bindsym $mod+t exec sakura
 bindsym $mod+c exec emacs
-bindsym $mod+d exec rofi -show run -theme
-bindsym $mod+Shift+d exec rofi -show drun -theme
-bindsym $mod+w exec rofi -show window -theme
+bindsym $mod+d exec rofi -show run -theme adapta
+bindsym $mod+Shift+d exec rofi -show drun -theme adapta
+bindsym $mod+w exec rofi -show window -theme adapta
 
 ###
 # Windows
