@@ -1,26 +1,33 @@
 #!/bin/sh
 log(){
-    echo "[+] $1" | tee -a ~/installation.log
+    echo "$(date) [+] $1" | tee -a ~/installation.log
 }
 
 warning(){
-    echo "[!] $1" | tee -a ~/installation.log
+    echo "$(date) [!] $1" | tee -a ~/installation.log
 }
 
 
 log "[+] Starting installation $(date)"
 log "Updating system"
 sudo zypper dup
-log "Installing graphical environment and development tools"
+log "Installing wayland graphical environment"
+sudo zypper in\
+     rofi sakura thunar sway evince brightnessctl swaylock lxsession lxappearance
+log "Installing X.org graphical environment"
+sudo zypper in\
+     i3 i3status lxrandr xinit xorg-x11 xorg-x11-server xfce4-screenshooter xfce4-power-manager 
+log "Installing development tools"
+sudo zypper in\
+     wget emacs git zsh htop podman buildah python3-virtualenv go 
+log "Installing theme assets"
 sudo zypper in\
      paper-icon-theme metatheme-paper-common breeze5-cursors\
-     wget chromium emacs i3 rofi sakura i3status git zsh\
-     gnome-font-viewer lxappearance lxrandr nautilus\
-     bluez xinit xorg-x11 xorg-x11-server htop keepassxc\
-     telegram-desktop podman buildah python3-virtualenv\
-     go xfce4-power-manager powertop xfce4-screenshooter\
-     lxsession sway evince brightnessctl swaylock
-
+     metatheme-greybird-geeko-common elementary-xfce-icon-theme
+log "Installing usefull stuff"
+sudo zypper in\
+     chromium gnome-font-viewer keepassxc telegram-desktop powertop
+log "Installing fonts"
 sudo zypper in -t pattern fonts
 log "Setting up powertop"
 sudo systemctl enable powertop
