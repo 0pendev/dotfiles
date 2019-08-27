@@ -1,22 +1,8 @@
 * Melpa default configuration
   #+BEGIN_SRC emacs-lisp
     (require 'package)
-    (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-			(not (gnutls-available-p))))
-	   (proto (if no-ssl "http" "https")))
-      (when no-ssl
-	(warn "\
-    Your version of Emacs does not support SSL connections,
-    which is unsafe because it allows man-in-the-middle attacks.
-    There are two things you can do about this warning:
-    1. Install an Emacs version that does support SSL and be safe.
-    2. Remove this warning from your init file so you won't see it again."))
-      ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
-      (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-      ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
-      (when (< emacs-major-version 24)
-	;; For important compatibility libraries like cl-lib
-	(add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
+    (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+			     ("melpa" . "http://melpa.org/packages/")))
     (package-initialize)
   #+END_SRC
 * Use-package
@@ -137,9 +123,35 @@
 	    (use-package company
 	      :ensure t
 	      :config
-	      (define-key company-mode-map [C-tab] 'company-complete)
-	      (add-hook 'after-init-hook 'global-company-mode))
+	      (define-key company-mode-map [C-tab] 'company-complete))
     #+END_SRC
+** Lsp
+   #+BEGIN_SRC emacs-lisp
+     (use-package lsp-mode
+       :ensure t
+       :commands (lsp)
+       :config
+       (use-package company-lsp
+	 :config
+	 (add-to-list 'company-backends 'company-lsp)))
+
+     (use-package lsp-ui
+       :ensure t
+       :hook (lsp-mode . lsp-ui-mode)
+       :config
+       (define-key lsp-ui-mode-map
+	 [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+       (define-key lsp-ui-mode-map
+	 [remap xref-find-references] #'lsp-ui-peek-find-references)
+       (setq lsp-ui-sideline-enable nil
+	     lsp-ui-doc-enable t
+	     lsp-ui-flycheck-enable nil
+	     lsp-ui-imenu-enable t
+	     lsp-ui-sideline-ignore-duplicate t))
+
+     (use-package company-lsp
+       :ensure t)
+   #+END_SRC
 *** Code snippets
     #+BEGIN_SRC emacs-lisp
       (use-package yasnippet
@@ -156,36 +168,27 @@
        (add-hook 'html-mode-hook 'emmet-mode))
    #+END_SRC
 ** Golang
+   /Needs gopls installed on the machine to work!/
    #+BEGIN_SRC emacs-lisp
-     (use-package go-eldoc
+     (use-package flycheck
        :ensure t)
 
      (use-package go-mode
-       :ensure t
-       :after go-eldoc
        :config
-       (defun go-mode-setup()
-	 (linum-mode 1)
-	 (go-eldoc-setup)
-	 (setq gofmt-command "goimports")
-	 (add-hook 'before-save-hook 'gofmt-before-save)
-	 (local-set-key (kbd "M-.") 'godef-jump)
-	 (setq compile-command "go build -v")
-	 (setq compilation-read-command nil)
-	 (define-key (current-local-map) "\C-c\C-c" 'compile)
-	 (local-set-key (kbd "M-,") 'compile))
-       (add-hook 'go-mode-hook 'go-mode-setup))
-
-     (use-package go-rename
-       :ensure t)
-
-     (use-package golint
-       :ensure t
-       :init
-       (add-to-list 'load-path (concat "~/go"  "/src/github.com/golang/lint/misc/emacs")))
-
-     (use-package go-complete
-       :ensure t
-       :config
-       (add-hook 'completion-at-point-functions 'go-complete-at-point))
+       ; Use goimports instead of go-fmt
+       (setq gofmt-command "goimports")
+       (flycheck-mode)
+       (add-hook 'go-mode-hook 'company-mode)
+       ;; Call Gofmt before saving
+       (add-hook 'before-save-hook 'gofmt-before-save)
+       (add-hook 'go-mode-hook #'lsp)
+       (add-hook 'go-mode-hook #'flycheck-mode)
+       (add-hook 'go-mode-hook '(lambda ()
+		      (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
+       (add-hook 'go-mode-hook '(lambda ()
+		      (local-set-key (kbd "C-c C-g") 'go-goto-imports)))
+       (add-hook 'go-mode-hook (lambda ()
+		     (set (make-local-variable 'company-backends) '(company-go))
+		     (company-mode))))
    #+END_SRC
+
