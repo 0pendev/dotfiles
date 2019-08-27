@@ -134,8 +134,8 @@ input 1267:8303:ELAN_Touchscreen {
 # Theming
 ################################################################################
 font pango:DejaVu Sans Mono 8
-default_border pixel 3
-include ./greybird-geeko.theme.config
+default_border pixel 2
+include ./paper.theme.config
 
 ###
 # Other

@@ -23,5 +23,5 @@ configuration {
 }
 
 #element selected {
-    text-color: #ffffff;
+    text-color: #dfdfdf;
 }
