@@ -165,6 +165,9 @@
 	:ensure t
 	:config
 	(yas-global-mode 1))
+
+      (use-package yasnippet-snippets
+	:ensure t)
     #+END_SRC
 
 ** HTML
@@ -174,13 +177,18 @@
        :config
        (add-hook 'html-mode-hook 'emmet-mode))
    #+END_SRC
+
 ** Golang
-   /Needs gopls installed on the machine to work!/
+   /Needs gopls and goimports installed on the machine to work!/
    #+BEGIN_SRC emacs-lisp
      (use-package flycheck
        :ensure t)
 
+     (use-package go-snippets
+       :ensure t)
+
      (use-package go-mode
+       :ensure t
        :config
        ; Use goimports instead of go-fmt
        (setq gofmt-command "goimports")
@@ -193,9 +201,9 @@
        (add-hook 'go-mode-hook '(lambda ()
 		      (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
        (add-hook 'go-mode-hook '(lambda ()
-		      (local-set-key (kbd "C-c C-g") 'go-goto-imports)))
-       (add-hook 'go-mode-hook (lambda ()
-		     (set (make-local-variable 'company-backends) '(company-go))
-		     (company-mode))))
+		      (local-set-key (kbd "C-c C-g") 'go-goto-imports))))
    #+END_SRC
-
+** Python3
+   #+BEGIN_SRC emacs-lisp
+   
+   #+END_SRC
