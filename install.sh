@@ -8,7 +8,7 @@ warning(){
 }
 
 
-log "[+] Starting installation $(date)"
+log "Starting installation $(date)"
 
 log "Updating system"
 sudo zypper dup
@@ -23,16 +23,22 @@ sudo zypper in\
 
 log "Installing development tools"
 sudo zypper in\
-     wget emacs git zsh htop podman buildah python3-virtualenv go 
+     emacs git zsh podman buildah python3-virtualenv go python3-devel
+
+log "Installing reverse tools"
+sudo zypper in\
+     gdb glibc-32bit
 
 log "Installing theme assets"
 sudo zypper in\
      paper-icon-theme metatheme-paper-common breeze5-cursors\
-     metatheme-greybird-geeko-common elementary-xfce-icon-theme
+     metatheme-greybird-geeko-common elementary-xfce-icon-theme\
+     qt5ct
 
 log "Installing usefull stuff"
 sudo zypper in\
-     chromium gnome-font-viewer keepassxc telegram-desktop powertop
+     chromium gnome-font-viewer keepassxc telegram-desktop\
+     wget htop
 
 log "Installing fonts"
 sudo zypper in -t pattern fonts
