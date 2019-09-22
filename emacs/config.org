@@ -118,9 +118,7 @@
 	      ;;Fedora
 	      "https://fedoramagazine.org/feed/"
 	      ;;OpenSuse
-	      "https://news.opensuse.org/feed/"
-	      ;;Hacker News
-	      "https://news.ycombinator.com/rss")))
+	      "https://news.opensuse.org/feed/")))
   #+END_SRC
 
 * Programmation
