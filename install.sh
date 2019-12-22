@@ -71,7 +71,7 @@ git config --global user.email "contact@ffreitas.io"
 git config --global user.name "0pendev"
 
 log "Setting up hostname to r0nd"
-sudo log "r0nd" > /etc/hostname
+sudo echo "r0nd" > /etc/hostname
 
 log "Installing oh-my-zsh"
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
