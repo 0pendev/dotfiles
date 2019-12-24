@@ -7,41 +7,46 @@ warning(){
     echo "$(date) [!] $1" | tee -a ~/installation.log
 }
 
+alias install="sudo zypper in"
+alias upgrade="sudo zypper dup"
 
 log "Starting installation $(date)"
 
 log "Updating system"
-sudo zypper dup
+upgrade
 
 log "Installing wayland graphical environment"
-sudo zypper in\
-     rofi sakura thunar sway evince brightnessctl swaylock lxsession lxappearance
+install\
+     rofi thunar sway  swaybg evince brightnessctl swaylock lxsession lxappearance xfce4-terminal
 
-log "Installing X.org graphical environment"
-sudo zypper in\
-     i3 i3status lxrandr xinit xorg-x11 xorg-x11-server xfce4-screenshooter xfce4-power-manager 
+# Uncomment to install X server
+#log "Installing X.org graphical environment"
+#install\
+#     i3 i3status lxrandr xinit xorg-x11 xorg-x11-server xfce4-screenshooter xfce4-power-manager 
 
 log "Installing development tools"
-sudo zypper in\
-     emacs git zsh podman buildah python3-virtualenv go python3-devel
+install\
+     emacs git zsh podman buildah python3-virtualenv python3-devel go
 
 log "Installing reverse tools"
-sudo zypper in\
+install\
      gdb glibc-32bit
 
+log "Installing gef for gdb"
+wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
+
 log "Installing theme assets"
-sudo zypper in\
-     paper-icon-theme metatheme-paper-common breeze5-cursors\
+install\
      metatheme-greybird-geeko-common elementary-xfce-icon-theme\
      qt5ct
 
 log "Installing usefull stuff"
-sudo zypper in\
+install\
      chromium gnome-font-viewer keepassxc telegram-desktop\
      wget htop
 
 log "Installing fonts"
-sudo zypper in -t pattern fonts
+install -t pattern fonts
 
 log "Setting up powertop"
 sudo systemctl enable powertop

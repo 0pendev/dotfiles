@@ -8,7 +8,7 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 ###
 # Program Launcher
 ################################################################################
-bindsym $mod+t exec sakura
+bindsym $mod+t exec xfce4-terminal
 bindsym $mod+c exec emacs
 
 ###
@@ -130,12 +130,17 @@ input 1267:8303:ELAN_Touchscreen {
       events disabled
 }
 
+set $laptop eDP-1
+bindswitch --reload lid:on output $laptop disable
+bindswitch --reload lid:off output $laptop enable
+
 ###
 # Theming
 ################################################################################
 font pango:DejaVu Sans Mono 8
 default_border pixel 2
-include ./greybird-geeko.theme.config
+include ./adwaita.theme.config
+output "*" bg "/usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png" fill
 
 ###
 # Other
