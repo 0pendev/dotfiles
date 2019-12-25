@@ -10,7 +10,8 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 ################################################################################
 bindsym $mod+t exec xfce4-terminal
 bindsym $mod+c exec emacs
-
+#bindsym $mod+p exec grim -g "$(slurp -d)" - | wl-copy
+bindsym $mod+p exec grim -g "$(slurp -d)" - > ~/latest
 ###
 # Windows
 ################################################################################
@@ -139,8 +140,8 @@ bindswitch --reload lid:off output $laptop enable
 ################################################################################
 font pango:DejaVu Sans Mono 8
 default_border pixel 2
-include ./adwaita.theme.config
-output "*" bg "/usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png" fill
+include ./default.theme.config
+output "*" bg "/usr/share/backgrounds/Ryan Schroeder.jpg" fill
 
 ###
 # Other

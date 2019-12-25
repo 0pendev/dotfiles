@@ -17,12 +17,12 @@ upgrade
 
 log "Installing wayland graphical environment"
 install\
-     rofi thunar sway  swaybg evince brightnessctl swaylock lxsession lxappearance xfce4-terminal
+     rofi thunar sway  swaybg evince brightnessctl swaylock lxsession lxappearance xfce4-terminal i3status
 
 # Uncomment to install X server
 #log "Installing X.org graphical environment"
 #install\
-#     i3 i3status lxrandr xinit xorg-x11 xorg-x11-server xfce4-screenshooter xfce4-power-manager 
+#     i3  lxrandr xinit xorg-x11 xorg-x11-server xfce4-screenshooter xfce4-power-manager 
 
 log "Installing development tools"
 install\
