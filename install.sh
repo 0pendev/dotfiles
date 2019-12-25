@@ -37,8 +37,7 @@ wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
 
 log "Installing theme assets"
 install\
-     metatheme-greybird-geeko-common elementary-xfce-icon-theme\
-     qt5ct
+     qt5ct elementary-icon-theme breeze5-cursors
 
 log "Installing usefull stuff"
 install\
