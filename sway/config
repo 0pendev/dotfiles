@@ -10,8 +10,7 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 ################################################################################
 bindsym $mod+t exec xfce4-terminal
 bindsym $mod+c exec emacs
-#bindsym $mod+p exec grim -g "$(slurp -d)" - | wl-copy
-bindsym $mod+p exec grim -g "$(slurp -d)" - > ~/latest
+bindsym $mod+p exec grim -g "$(slurp -d)" - > ~/Documents/latest.png
 ###
 # Windows
 ################################################################################
