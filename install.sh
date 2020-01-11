@@ -32,8 +32,16 @@ log "Installing reverse tools"
 install\
      gdb glibc-32bit
 
+log "Installing radare2 dependencies"
+install\
+    gcc gcc patch meson
+
+
 log "Installing gef for gdb"
 wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
+
+log "Installing build dependencies for radare2"
+
 
 log "Installing theme assets"
 install\
@@ -41,8 +49,8 @@ install\
 
 log "Installing usefull stuff"
 install\
-     chromium gnome-font-viewer keepassxc telegram-desktop\
-     wget htop
+    chromium keepassxc telegram-desktop wget htop\
+    yubioath-desktop nextcloud-client
 
 log "Installing fonts"
 install -t pattern fonts
@@ -63,19 +71,7 @@ ln -s ~/Documents/dotfiles/rofi ~/.config
 ln -s ~/Documents/dotfiles/sway ~/.config
 ln -s ~/Documents/dotfiles/sakura ~/.config
 ln -s ~/Documents/dotfiles/xorg/.xinitrc ~/.xinitrc
-
-log "Downloading all-the-icons"
-mkdir ~/Downloads
-cd ~/Downloads
-git clone https://github.com/domtronn/all-the-icons.el
-warning "Now install the fonts and configure the theme."
-
-log "Setting up git globally"
-git config --global user.email "contact@ffreitas.io"
-git config --global user.name "0pendev"
-
-log "Setting up hostname to r0nd"
-sudo echo "r0nd" > /etc/hostname
+ln -s ~/Documents/dotfiles/git/.gitconfig ~/.gitconfig
 
 log "Installing oh-my-zsh"
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
