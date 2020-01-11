@@ -1,9 +1,6 @@
 general {
     interval	    = 1
     colors 	    = true
-    #color_good      = '#88b090'
-    #color_degraded  = '#ccdc90'
-    #color_bad       = '#e89393'
     color_good      = '#323232'
     color_degraded  = '#323232'
     color_bad       = '#323232'
@@ -12,8 +9,10 @@ general {
 order += "volume master"
 order += "disk /"
 order += "disk /home"
+order += "disk /var"
 order += "wireless wlp2s0"
 order += "wireless wlp3s0"
+order += "wireless wlp0s20u3u1"
 order += "ethernet enp0s25"
 #order += "ipv6"
 #order += "run_watch DHCP"
@@ -31,6 +30,11 @@ wireless wlp2s0 {
 }
 
 wireless wlp3s0 {
+    format_up = "%quality  %essid %ip"
+    format_down = ""
+}
+
+wireless wlp0s20u3u1 {
     format_up = "%quality  %essid %ip"
     format_down = ""
 }
@@ -91,18 +95,27 @@ cpu_usage {
 }
 
 disk "/" {
-	format = " %avail"
+	format = " / %avail"
 	prefix_type	= custom
 	low_threshold = 20
 	threshold_type = percentage_avail
 }
 
 disk "/home" {
-        format = " %avail"
+        format = " /home %avail"
         prefix_type     = custom
         low_threshold = 20
         threshold_type = percentage_avail
 }
+
+
+disk "/var" {
+        format = " /var %avail"
+        prefix_type     = custom
+        low_threshold = 20
+        threshold_type = percentage_avail
+}
+
 
 volume master {
     format = "  %volume"
