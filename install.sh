@@ -17,7 +17,7 @@ upgrade
 
 log "Installing wayland graphical environment"
 install\
-     rofi thunar sway  swaybg evince brightnessctl swaylock lxsession lxappearance xfce4-terminal i3status
+     rofi thunar sway  swaybg evince brightnessctl swaylock lxsession lxappearance alacritty i3status
 
 # Uncomment to install X server
 #log "Installing X.org graphical environment"
@@ -50,7 +50,7 @@ install\
 log "Installing usefull stuff"
 install\
     chromium keepassxc telegram-desktop wget htop\
-    yubioath-desktop nextcloud-client
+    yubioath-desktop nextcloud-client NetworkManager-connection-editor
 
 log "Installing fonts"
 install -t pattern fonts
@@ -66,6 +66,7 @@ git clone http://github.com/0pendev/dotfiles
 rm -rf ~/.emacs*
 ln -s ~/Documents/dotfiles/emacs ~/.emacs.d
 mkdir ~/.config
+ln -s ~/Documents/dotfiles/alacritty ~/.alacritty
 ln -s ~/Documents/dotfiles/i3status ~/.config
 ln -s ~/Documents/dotfiles/rofi ~/.config
 ln -s ~/Documents/dotfiles/sway ~/.config
