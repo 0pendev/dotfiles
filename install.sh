@@ -17,7 +17,8 @@ upgrade
 
 log "Installing wayland graphical environment"
 install\
-     rofi thunar sway  swaybg evince brightnessctl swaylock lxsession lxappearance alacritty i3status
+    rofi thunar sway  swaybg evince brightnessctl swaylock lxsession lxappearance\
+    alacritty i3status Mesa-dri
 
 # Uncomment to install X server
 #log "Installing X.org graphical environment"
@@ -45,7 +46,7 @@ log "Installing build dependencies for radare2"
 
 log "Installing theme assets"
 install\
-     qt5ct elementary-icon-theme breeze5-cursors
+     qt5ct elementary-icon-theme breeze5-cursors elementary-wallpapers
 
 log "Installing usefull stuff"
 install\
@@ -66,7 +67,7 @@ git clone http://github.com/0pendev/dotfiles
 rm -rf ~/.emacs*
 ln -s ~/Documents/dotfiles/emacs ~/.emacs.d
 mkdir ~/.config
-ln -s ~/Documents/dotfiles/alacritty ~/.alacritty
+ln -s ~/Documents/dotfiles/alacritty ~/.config
 ln -s ~/Documents/dotfiles/i3status ~/.config
 ln -s ~/Documents/dotfiles/rofi ~/.config
 ln -s ~/Documents/dotfiles/sway ~/.config
