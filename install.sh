@@ -35,14 +35,10 @@ install\
 
 log "Installing radare2 dependencies"
 install\
-    gcc gcc patch meson
-
+    gcc gcc patch meson make
 
 log "Installing gef for gdb"
 wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
-
-log "Installing build dependencies for radare2"
-
 
 log "Installing theme assets"
 install\
