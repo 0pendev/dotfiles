@@ -10,7 +10,7 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 ################################################################################
 bindsym $mod+t exec alacritty
 bindsym $mod+c exec emacs
-bindsym $mod+p exec grim -g "$(slurp -d)" - > ~/Documents/latest.png
+bindsym $mod+p exec grim -g "$(slurp -d)" - > ~/Pictures/$(date | sed 's/ /_/g').png
 ###
 # Windows
 ################################################################################
@@ -59,7 +59,6 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
-
 
 ###
 # Workspaces
@@ -140,8 +139,8 @@ bindswitch --reload lid:off output $laptop enable
 font pango:DejaVu Sans Mono 8
 default_border pixel 2
 include ./default.theme.config
-output "*" bg "/usr/share/backgrounds/Ryan Schroeder.jpg" fill
-
+#output "*" bg "/usr/share/backgrounds/Ryan Schroeder.jpg" fill
+output "*" bg "/home/opendev/Untitled.png" fill
 ###
 # Other
 ################################################################################
