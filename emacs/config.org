@@ -61,23 +61,6 @@
        (add-hook 'ibuffer-sidebar-mode-hook 'hide-mode-line-mode)
        (global-set-key [f8] 'ibuffer-sidebar-toggle-sidebar))
    #+END_SRC
-** Tabs
-   #+BEGIN_QUOTE
-    (use-package centaur-tabs
-       :ensure t
-       :demand
-       :config
-       (centaur-tabs-mode t)
-       (centaur-tabs-headline-match)
-       (setq centaur-tabs-set-icons t)
-       (setq centaur-tabs-set-bar 'left)
-       (setq centaur-tabs-set-modified-marker t)
-       (setq centaur-tabs-set-close-button nil)
-       (setq centaur-tabs-style "bar")
-       :bind
-       ("C-<prior>" . centaur-tabs-backward)
-       ("C-<next>" . centaur-tabs-forward))
-   #+END_QUOTE
 ** Key bindings
    #+BEGIN_SRC emacs-lisp
      (global-set-key (kbd "C-!") 'kill-this-buffer)
@@ -125,10 +108,11 @@
 ** Général
 *** Autocompletion
     #+BEGIN_SRC emacs-lisp
-	    (use-package company
-	      :ensure t
-	      :config
-	      (define-key company-mode-map [C-tab] 'company-complete))
+      (use-package company
+	:ensure t
+	:config
+	(setq company-idle-delay nil)
+	(define-key company-mode-map [C-tab] 'company-complete))
     #+END_SRC
 *** Lsp
    #+BEGIN_SRC emacs-lisp
@@ -137,13 +121,11 @@
        :commands (lsp)
        :config
        (use-package company-lsp
+	 :ensure t
 	 :config
 	 (add-to-list 'company-backends 'company-lsp)))
 
      (use-package lsp-ui
-       :ensure t)
-
-     (use-package company-lsp
        :ensure t)
    #+END_SRC
 *** Code snippets
@@ -156,7 +138,11 @@
       (use-package yasnippet-snippets
 	:ensure t)
     #+END_SRC
-
+*** flychake
+    #+BEGIN_SRC emacs-lisp
+      (use-package flycheck
+	:ensure t)
+    #+END_SRC
 ** HTML
    #+BEGIN_SRC emacs-lisp
      (use-package emmet-mode
@@ -164,41 +150,31 @@
        :config
        (add-hook 'html-mode-hook 'emmet-mode))
    #+END_SRC
-
 ** Golang
    /Needs gopls and goimports installed on the machine to work!/
    #+BEGIN_SRC emacs-lisp
-     (use-package flycheck
-       :ensure t)
-
      (use-package go-snippets
        :ensure t)
 
      (use-package go-mode
        :ensure t
+       :hook (go-mode . company-mode)
+       :hook (go-mode . lsp)
+       :hook (go-mode . flycheck-mode)
        :config
-       ; Use goimports instead of go-fmt
        (setq gofmt-command "goimports")
-       (flycheck-mode)
-       (add-hook 'go-mode-hook 'company-mode)
-       ;; Call Gofmt before saving
-       (add-hook 'before-save-hook 'gofmt-before-save)
-       (add-hook 'go-mode-hook 'lsp)
-       (add-hook 'go-mode-hook 'flycheck-mode)
-       (add-hook 'go-mode-hook '(lambda ()
-		      (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
-       (add-hook 'go-mode-hook '(lambda ()
-		      (local-set-key (kbd "C-c C-g") 'go-goto-imports))))
+       (defun beforesavehook()
+	 (gofmt-before-save))
+       (add-hook 'before-save-hook 'beforesavehook))
    #+END_SRC
 ** Python3
    #+BEGIN_SRC emacs-lisp
-	  (use-package go-mode
-	    :ensure t
-	    :config
-	    (setq python-shell-interpreter "python3")
-	    (flycheck-mode)
-	    (add-hook 'python-mode-hook 'company-mode)
-	    ;; Call Gofmt before saving
-	    (add-hook 'python-mode-hook 'lsp)
-	    (add-hook 'python-mode-hook 'flycheck-mode))
+     (use-package python-mode
+       :ensure t
+       :hook (python-mode . company-mode)
+       :hook (python-mode . lsp)
+       :hook (python-mode . flycheck-mode)
+       :config
+       (setq python-shell-interpreter "python3"))
    #+END_SRC
+   
