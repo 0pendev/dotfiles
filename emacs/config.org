@@ -72,6 +72,10 @@
      (use-package doom-themes
        :ensure t)
    #+END_SRC
+** Cursor
+   #+BEGIN_SRC emacs-lisp
+     (setq-default cursor-type 'bar)
+   #+END_SRC
 * Org-mode
    #+BEGIN_SRC emacs-lisp
      (use-package org
