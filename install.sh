@@ -71,5 +71,9 @@ ln -s ~/Documents/dotfiles/sakura ~/.config
 ln -s ~/Documents/dotfiles/xorg/.xinitrc ~/.xinitrc
 ln -s ~/Documents/dotfiles/git/.gitconfig ~/.gitconfig
 
+log "Configure subuids and subgid to support rootless podman"
+myuser=$USER
+sudo usermod --add-subuids 10000-65536 $my_user
+sudo usermod --add-subgid 10000-65536 $my_user
 log "Installing oh-my-zsh"
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
