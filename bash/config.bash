@@ -29,3 +29,8 @@ org2ensibs(){
 
 # Pip binary path
 export PATH=$PATH:$HOME/.local/bin
+
+# GPG SSH Auth Configuration
+export GPG_TTY=$(tty)
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
