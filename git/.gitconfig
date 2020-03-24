@@ -1,3 +1,5 @@
 [user]
 	email = contact@ffreitas.io
-	name = 0pendev
+	name = Francisco Freitas
+[commit]
+	gpgsign = true
