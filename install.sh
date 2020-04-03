@@ -73,8 +73,7 @@ ln -s ~/Documents/dotfiles/git/.gitconfig ~/.gitconfig
 ln -s ~/Documents/dotfiles/albert ~/.config
 
 log "Configure subuids and subgid to support rootless podman"
-myuser=$USER
-sudo usermod --add-subuids 10000-65536 $my_user
-sudo usermod --add-subgid 10000-65536 $my_user
+sudo usermod --add-subuids 10000-65536 $USER
+sudo usermod --add-subgid 10000-65536 $USER
 log "Installing oh-my-zsh"
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
