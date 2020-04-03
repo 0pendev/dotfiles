@@ -17,7 +17,7 @@ upgrade
 
 log "Installing wayland graphical environment"
 install\
-    rofi thunar sway  swaybg evince brightnessctl swaylock lxsession lxappearance\
+    albert thunar sway  swaybg evince brightnessctl swaylock lxsession lxappearance\
     alacritty i3status Mesa-dri
 
 # Uncomment to install X server
