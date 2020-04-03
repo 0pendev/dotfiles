@@ -115,8 +115,7 @@
       (use-package company
 	:ensure t
 	:config
-	(setq company-minimum-prefix-length 1
-	      company-idle-delay nil)
+	(setq company-idle-delay nil)
 	(define-key company-mode-map [C-tab] 'company-complete))
     #+END_SRC
 *** Spellchecking
@@ -132,16 +131,15 @@
        :ensure t
        :commands (lsp)
        :config
-       (setq lsp-diagnostic-package :flycheck
-	     lsp-idle-delay 10))
+       (setq lsp-flycheck-live-reporting nil))
+
+     (use-package lsp-ui
+       :ensure t)
 
      (use-package company-lsp
 	 :ensure t
 	 :config
 	 (add-to-list 'company-backends 'company-lsp))
-
-     (use-package lsp-ui
-       :ensure t)
    #+END_SRC
 *** Code snippets
     #+BEGIN_SRC emacs-lisp
@@ -160,6 +158,13 @@
        :config
        (add-hook 'html-mode-hook 'emmet-mode))
    #+END_SRC
+** JSP
+   #+BEGIN_SRC emacs-lisp
+     (use-package web-mode
+       :ensure t
+       :config
+       (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode)))
+   #+END_SRC
 ** Golang
    /Needs gopls and goimports installed on the machine to work!/
    #+BEGIN_SRC emacs-lisp
@@ -168,9 +173,7 @@
 
      (use-package go-mode
        :ensure t
-       :hook (go-mode . company-mode)
        :hook (go-mode . lsp)
-       :hook (go-mode . flycheck-mode)
        :config
        (setq gofmt-command "goimports")
        (add-hook 'before-save-hook 'gofmt-before-save))
@@ -179,9 +182,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package python-mode
        :ensure t
-       :hook (python-mode . company-mode)
        :hook (python-mode . lsp)
-       :hook (python-mode . flycheck-mode)
        :config
        (setq python-shell-interpreter "python3"))
    #+END_SRC
