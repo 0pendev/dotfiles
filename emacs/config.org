@@ -47,8 +47,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package doom-modeline
 	   :ensure t
-	   :defer t
-	   :hook (after-init . doom-modeline-init))
+	   :init (doom-modeline-mode 1))
    #+END_SRC
 ** sidebar
    #+BEGIN_SRC emacs-lisp
@@ -79,6 +78,8 @@
 * Org-mode
    #+BEGIN_SRC emacs-lisp
      (use-package org
+       :hook (org-mode . org-indent-mode)
+       :hook (org-mode . visual-line-mode)
        :config
        (setq org-src-fontify-natively t)
        (setq org-todo-keywords '((sequence "TODO(t)" "IN WORK(w)" "|" "DONE(d)" "CANCELED(c)"))))
@@ -154,14 +155,13 @@
 ** HTML
    #+BEGIN_SRC emacs-lisp
      (use-package emmet-mode
-       :ensure t
-       :config
-       (add-hook 'html-mode-hook 'emmet-mode))
+       :ensure t)
    #+END_SRC
 ** JSP
    #+BEGIN_SRC emacs-lisp
      (use-package web-mode
        :ensure t
+       :hook (web-mode . emmet-mode)
        :config
        (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode)))
    #+END_SRC
@@ -186,4 +186,5 @@
        :config
        (setq python-shell-interpreter "python3"))
    #+END_SRC
+   
    
