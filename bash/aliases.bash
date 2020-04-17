@@ -22,3 +22,5 @@ alias zypal="sudo zypper al"
 alias reddit="rtv"
 # Random aliases
 alias bye="echo \"See ya $USER@$HOST !\" && sudo poweroff"
+# Useful for debug
+alias coredumpdebug="coredumpctl debug $(coredumpctl -r | sed -n 2p | awk '{print $5}')"
