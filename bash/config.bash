@@ -7,6 +7,10 @@ if [ "$(tty)" = "/dev/tty2" ]; then
         exec startx
 fi
 
+printshellcode() {
+    objdump -d $1 |grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
+}
+
 # Export configuration for my org-files
 org2pdf(){
     pandoc $1 -o $2 --template $3 --number-sections --listings
