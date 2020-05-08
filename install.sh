@@ -17,8 +17,8 @@ upgrade
 
 log "Installing wayland graphical environment"
 install\
-    albert thunar sway  swaybg evince brightnessctl swaylock lxsession lxappearance\
-    alacritty i3status Mesa-dri
+    albert thunar thunar-plugin-archive sway  swaybg evince brightnessctl\
+    swaylock lxsession lxappearance alacritty i3status Mesa-dri engrampa
 
 # Uncomment to install X server
 #log "Installing X.org graphical environment"
@@ -27,7 +27,7 @@ install\
 
 log "Installing development tools"
 install\
-     emacs git zsh podman buildah python3-virtualenv python3-devel go
+     emacs git zsh podman flatpak buildah python3-virtualenv python3-devel go
 
 log "Installing reverse tools"
 install\
