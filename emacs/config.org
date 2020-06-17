@@ -49,17 +49,6 @@
 	   :ensure t
 	   :init (doom-modeline-mode 1))
    #+END_SRC
-** sidebar
-   #+BEGIN_SRC emacs-lisp
-     (use-package hide-mode-line
-       :ensure t)
-
-     (use-package ibuffer-sidebar
-       :ensure t
-       :config
-       (add-hook 'ibuffer-sidebar-mode-hook 'hide-mode-line-mode)
-       (global-set-key [f8] 'ibuffer-sidebar-toggle-sidebar))
-   #+END_SRC
 ** Key bindings
    #+BEGIN_SRC emacs-lisp
      (global-set-key (kbd "C-!") 'kill-this-buffer)
