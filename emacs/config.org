@@ -55,7 +55,7 @@
      (global-set-key (kbd "C-<next>") 'next-buffer)
      (global-set-key (kbd "C-<prior>") 'previous-buffer)
    #+END_SRC
-** Doomthemes
+** Doom Themes
    #+BEGIN_SRC emacs-lisp
      (use-package doom-themes
        :ensure t)
@@ -64,6 +64,18 @@
    #+BEGIN_SRC emacs-lisp
      (setq-default cursor-type 'bar)
    #+END_SRC
+** Smartparens
+#+BEGIN_SRC emacs-lisp
+  (use-package smartparens
+    :ensure t
+    :diminish smartparens-mdoe
+    :config
+    (smartparens-global-mode 1)
+    (smartparens-strict-mode 1)
+    (show-smartparens-global-mode t)
+    (setq smartparens-global-strict-mode t)
+    (setq sp-highlight-pair-overlay nil))
+#+END_SRC
 * Org-mode
    #+BEGIN_SRC emacs-lisp
      (use-package org
@@ -81,10 +93,10 @@
 *** Autocompletion
     #+BEGIN_SRC emacs-lisp
       (use-package company
-	:ensure t
-	:config
-	(setq company-idle-delay nil)
-	(define-key company-mode-map [C-tab] 'company-complete))
+        :ensure t
+        :config
+        (setq company-idle-delay nil)
+        (define-key company-mode-map [C-tab] 'company-complete))
     #+END_SRC
 *** Spellchecking
     #+BEGIN_SRC emacs-lisp
@@ -95,19 +107,19 @@
     #+END_SRC
 *** Lsp
    #+BEGIN_SRC emacs-lisp
-     (use-package lsp-mode
-       :ensure t
-       :commands (lsp)
-       :config
-       (setq lsp-flycheck-live-reporting nil))
+          (use-package lsp-mode
+            :ensure t
+            :commands (lsp)
+            :config
+            (setq lsp-flycheck-live-reporting nil))
 
-     (use-package lsp-ui
-       :ensure t)
+          (use-package lsp-ui
+            :ensure t)
 
-     (use-package company-lsp
-	 :ensure t
-	 :config
-	 (add-to-list 'company-backends 'company-lsp))
+          (use-package company-lsp
+              :ensure t
+              :config
+              (add-to-list 'company-backends 'company-lsp))
    #+END_SRC
 *** Code snippets
     #+BEGIN_SRC emacs-lisp
