@@ -71,6 +71,8 @@ ln -s ~/Documents/dotfiles/sakura ~/.config
 ln -s ~/Documents/dotfiles/xorg/.xinitrc ~/.xinitrc
 ln -s ~/Documents/dotfiles/git/.gitconfig ~/.gitconfig
 ln -s ~/Documents/dotfiles/albert ~/.config
+ln -s ~/Documents/dotfiles/waybar ~/.config
+
 
 log "Configure subuids and subgid to support rootless podman"
 sudo usermod --add-subuids 10000-65536 $USER

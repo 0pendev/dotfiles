@@ -1,0 +1,21 @@
+###
+# Theming
+################################################################################
+output "*" bg "/usr/share/backgrounds/Ryan Schroeder.jpg" fill
+
+# Default configuraiton
+font pango:DejaVu Sans Mono 8
+default_border pixel 4
+
+# Albert configuration
+bindsym $mod+d exec albert toggle
+
+exec gsettings set org.gnome.desktop.interface cursor-theme 'Breeze_Snow'
+
+# https://thomashunter.name/i3-configurator/
+# class                 border  bground text    indicator child_border
+client.focused          #32323280 #32323280 #FFFFFF #32323280   #32323280
+client.focused_inactive #33333300 #5F676A00 #323232 #484E5000   #5F676A00
+client.unfocused        #33333300 #22222200 #323232 #292D2E00   #22222200
+client.urgent           #2F343A00 #90000000 #FFFFFF00 #90000000   #90000000
+client.placeholder      #00000000 #0C0C0C00 #FFFFFF00 #00000000   #0C0C0C00

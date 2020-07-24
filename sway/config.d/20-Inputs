@@ -1,0 +1,20 @@
+###
+# Inputs
+################################################################################
+input * {
+    xkb_layout fr
+}
+
+input 2:14:ETPS/2_Elantech_Touchpad {
+      tap enabled
+      drag enabled
+      dwt enabled
+}
+
+input 1267:8303:ELAN_Touchscreen {
+      events disabled
+}
+
+set $laptop eDP-1
+bindswitch --reload lid:on output $laptop disable
+bindswitch --reload lid:off output $laptop enable
