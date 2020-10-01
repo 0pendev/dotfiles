@@ -10,7 +10,11 @@ default_border pixel 4
 # Albert configuration
 bindsym $mod+d exec albert toggle
 
-exec gsettings set org.gnome.desktop.interface cursor-theme 'Breeze_Snow'
+exec_always {
+    gsettings set org.gnome.desktop.interface gtk-theme 'Breeze'
+    gsettings set org.gnome.desktop.interface icon-theme 'elementary'
+    gsettings set org.gnome.desktop.interface cursor-theme 'Breeze_Snow'
+}
 
 # https://thomashunter.name/i3-configurator/
 # class                 border  bground text    indicator child_border

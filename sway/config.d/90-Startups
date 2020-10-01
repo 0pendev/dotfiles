@@ -2,3 +2,4 @@
 # Other
 ################################################################################
 exec --no-startup-id albert
+exec --no-startup-id lxpolkit 

@@ -15,14 +15,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (doom-tomorrow-day)))
+ '(custom-enabled-themes '(doom-one))
  '(custom-safe-themes
-   (quote
-    ("7a994c16aa550678846e82edc8c9d6a7d39cc6564baaaacc305a3fdc0bd8725f" default)))
+   '("2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" "7a994c16aa550678846e82edc8c9d6a7d39cc6564baaaacc305a3fdc0bd8725f" default))
  '(delete-selection-mode nil)
  '(package-selected-packages
-   (quote
-    (python-mode go-mode go-snippets web-mode emmet-mode yasnippet-snippets yasnippet company-lsp lsp-ui lsp-mode flycheck company org-re-reveal smartparens doom-themes doom-modeline dashboard use-package))))
+   '(org-caldav yaml-mode python-mode go-mode go-snippets web-mode emmet-mode yasnippet-snippets yasnippet company-lsp lsp-ui lsp-mode flycheck company org-re-reveal smartparens doom-themes doom-modeline dashboard use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
