@@ -9,7 +9,7 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 ################################################################################
 bindsym $mod+t exec alacritty
 bindsym $mod+c exec emacs
-bindsym $mod+p exec grim -g "$(slurp -d)" - > ~/Pictures/$(date | sed 's/ /_/g').png
+bindsym $mod+p exec grim -g "$(slurp -d)" - > ~/Pictures/Screenshots/$(date | sed 's/ /_/g').png
 
 ###
 # Windows
