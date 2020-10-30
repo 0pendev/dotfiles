@@ -1,69 +1,69 @@
 * Melpa default configuration
-  #+BEGIN_SRC emacs-lisp
-    (require 'package)
-    (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-			     ("melpa" . "http://melpa.org/packages/")))
-    (package-initialize)
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (require 'package)
+  (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                           ("melpa" . "http://melpa.org/packages/")))
+  (package-initialize)
+#+END_SRC
 * Use-package
-  #+BEGIN_SRC emacs-lisp
-    (eval-when-compile
-      (require 'use-package))
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (eval-when-compile
+    (require 'use-package))
+#+END_SRC
 * Setting up UTF-8
-  #+BEGIN_SRC emacs-lisp
-    (setq locale-coding-system 'utf-8)
-    (set-terminal-coding-system 'utf-8)
-    (set-keyboard-coding-system 'utf-8)
-    (set-selection-coding-system 'utf-8)
-    (prefer-coding-system 'utf-8)
-    (when (display-graphic-p)
-       (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
-  #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (setq locale-coding-system 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (set-selection-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8)
+  (when (display-graphic-p)
+     (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
+#+END_SRC
 * UI/UX
 ** As simple as possible
-   #+BEGIN_SRC emacs-lisp
-     (if (display-graphic-p)
-	  (scroll-bar-mode -1))
-     (menu-bar-mode -1)
-     (tool-bar-mode -1)
-     (setq inhibit-startup-screen t)
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (if (display-graphic-p)
+       (scroll-bar-mode -1))
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (setq inhibit-startup-screen t)
+#+END_SRC
 ** All temporary files in same direcotry
-   #+BEGIN_SRC emacs-lisp
-     (setq backup-directory-alist
-	   `((".*" . ,temporary-file-directory)))
-     (setq auto-save-file-name-transforms
-	   `((".*" ,temporary-file-directory t)))
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (setq backup-directory-alist
+        `((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+        `((".*" ,temporary-file-directory t)))
+#+END_SRC
 ** Dashboard
-   #+BEGIN_SRC emacs-lisp
-     (use-package dashboard
-       :ensure t
-       :config
-       (dashboard-setup-startup-hook))
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (use-package dashboard
+    :ensure t
+    :config
+    (dashboard-setup-startup-hook))
+#+END_SRC
 ** Modeline
-   #+BEGIN_SRC emacs-lisp
-     (use-package doom-modeline
-	   :ensure t
-	   :init (doom-modeline-mode 1))
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (use-package doom-modeline
+        :ensure t
+        :init (doom-modeline-mode 1))
+#+END_SRC
 ** Key bindings
-   #+BEGIN_SRC emacs-lisp
-     (global-set-key (kbd "C-!") 'kill-this-buffer)
-     (global-set-key (kbd "C-<next>") 'next-buffer)
-     (global-set-key (kbd "C-<prior>") 'previous-buffer)
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-!") 'kill-this-buffer)
+  (global-set-key (kbd "C-<next>") 'next-buffer)
+  (global-set-key (kbd "C-<prior>") 'previous-buffer)
+#+END_SRC
 ** Doom Themes
-   #+BEGIN_SRC emacs-lisp
-     (use-package doom-themes
-       :ensure t)
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (use-package doom-themes
+    :ensure t)
+#+END_SRC
 ** Cursor
-   #+BEGIN_SRC emacs-lisp
-     (setq-default cursor-type 'bar)
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (setq-default cursor-type 'bar)
+#+END_SRC
 ** Smartparens
 #+BEGIN_SRC emacs-lisp
   (use-package smartparens
@@ -77,93 +77,85 @@
     (setq sp-highlight-pair-overlay nil))
 #+END_SRC
 * Org-mode
-   #+BEGIN_SRC emacs-lisp
-     (use-package org
-       :hook (org-mode . org-indent-mode)
-       :hook (org-mode . visual-line-mode)
-       :config
-       (setq org-src-fontify-natively t)
-       (setq org-todo-keywords '((sequence "TODO(t)" "IN WORK(w)" "|" "DONE(d)" "CANCELED(c)"))))
-     (use-package org-re-reveal
-       :ensure t
-       :after org)
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (use-package org
+    :hook (org-mode . org-indent-mode)
+    :hook (org-mode . visual-line-mode)
+    :config
+    (setq org-src-fontify-natively t)
+    (setq org-todo-keywords '((sequence "TODO(t)" "IN WORK(w)" "|" "DONE(d)" "CANCELED(c)"))))
+
+  (use-package org-re-reveal
+    :ensure t
+    :after org)
+#+END_SRC
 * Programmation
 ** General
 *** Autocompletion
-    #+BEGIN_SRC emacs-lisp
-      (use-package company
-        :ensure t
-        :config
-        (setq company-idle-delay nil)
-        (define-key company-mode-map [C-tab] 'company-complete))
-    #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (use-package company
+    :ensure t
+    :config
+    (define-key company-mode-map [C-tab] 'company-complete))
+#+END_SRC
 *** Spellchecking
-    #+BEGIN_SRC emacs-lisp
-      (use-package flycheck
-	:ensure t
-	:config
-	(setq flycheck-check-syntax-automatically '(mode-enabled save)))
-    #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :config
+    (setq flycheck-check-syntax-automatically '(mode-enabled save)))
+#+END_SRC
 *** Lsp
-   #+BEGIN_SRC emacs-lisp
-          (use-package lsp-mode
-            :ensure t
-            :commands (lsp)
-            :config
-            (setq lsp-flycheck-live-reporting nil))
-
-          (use-package lsp-ui
-            :ensure t)
-
-          (use-package company-lsp
-              :ensure t
-              :config
-              (add-to-list 'company-backends 'company-lsp))
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (use-package lsp-mode
+    :ensure t
+    :commands (lsp)
+    :config
+    (setq lsp-flycheck-live-reporting nil))
+   (use-package lsp-ui
+    :ensure t)
+#+END_SRC
 *** Code snippets
-    #+BEGIN_SRC emacs-lisp
-      (use-package yasnippet
-	:ensure t
-	:config
-	(yas-global-mode 1))
+#+BEGIN_SRC emacs-lisp
+  (use-package yasnippet
+    :ensure t
+    :config
+    (yas-global-mode 1))
 
-      (use-package yasnippet-snippets
-	:ensure t)
-    #+END_SRC
+  (use-package yasnippet-snippets
+    :ensure t)
+#+END_SRC
 ** HTML
-   #+BEGIN_SRC emacs-lisp
-     (use-package emmet-mode
-       :ensure t)
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (use-package emmet-mode
+    :ensure t)
+#+END_SRC
 ** JSP
-   #+BEGIN_SRC emacs-lisp
-     (use-package web-mode
-       :ensure t
-       :hook (web-mode . emmet-mode)
-       :config
-       (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode)))
-   #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (use-package web-mode
+    :ensure t
+    :hook (web-mode . emmet-mode)
+    :config
+    (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode)))
+#+END_SRC
 ** Golang
-   /Needs gopls and goimports installed on the machine to work!/
-   #+BEGIN_SRC emacs-lisp
-     (use-package go-snippets
-       :ensure t)
+/Needs gopls and goimports installed on the machine to work!/
+#+BEGIN_SRC emacs-lisp
+  (use-package go-snippets
+    :ensure t)
 
-     (use-package go-mode
-       :ensure t
-       :hook (go-mode . lsp)
-       :config
-       (setq gofmt-command "goimports")
-       (add-hook 'before-save-hook 'gofmt-before-save))
-   #+END_SRC
+  (use-package go-mode
+    :ensure t
+    :hook (go-mode . lsp)
+    :config
+    (setq gofmt-command "goimports")
+    (add-hook 'before-save-hook 'gofmt-before-save))
+#+END_SRC
 ** Python3
-   #+BEGIN_SRC emacs-lisp
-     (use-package python-mode
-       :ensure t
-       :hook (python-mode . lsp)
-       :config
-       (setq python-shell-interpreter "python3"))
-   #+END_SRC
-   
-   
+#+BEGIN_SRC emacs-lisp
+  (use-package python-mode
+    :ensure t
+    :hook (python-mode . lsp)
+    :config
+    (setq python-shell-interpreter "python3"))
+#+END_SRC
