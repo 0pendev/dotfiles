@@ -111,6 +111,7 @@
     :ensure t
     :commands (lsp)
     :config
+    (setq lsp-log-io "")
     (setq lsp-flycheck-live-reporting nil))
    (use-package lsp-ui
     :ensure t)
@@ -125,6 +126,11 @@
   (use-package yasnippet-snippets
     :ensure t)
 #+END_SRC
+*** Podman integration
+#+begin_src emacs-lisp
+  (add-to-list 'load-path "~/.emacs.d/elpa/oci-tramp/")
+  (require 'podman-tramp)
+#+end_src
 ** HTML
 #+BEGIN_SRC emacs-lisp
   (use-package emmet-mode
@@ -144,6 +150,12 @@
   (use-package go-snippets
     :ensure t)
 
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-tramp-connection "gopls")
+                    :major-modes '(go-mode)
+                    :remote? t
+                    :server-id 'gopls-remote))
+
   (use-package go-mode
     :ensure t
     :hook (go-mode . lsp)
@@ -153,6 +165,12 @@
 #+END_SRC
 ** Python3
 #+BEGIN_SRC emacs-lisp
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-tramp-connection "pyls")
+                    :major-modes '(python-mode)
+                    :remote? t
+                    :server-id 'pyls-remote))
+
   (use-package python-mode
     :ensure t
     :hook (python-mode . lsp)
