@@ -76,6 +76,13 @@
     (setq smartparens-global-strict-mode t)
     (setq sp-highlight-pair-overlay nil))
 #+END_SRC
+** Fira Code
+#+begin_src emacs-lisp
+  (use-package fira-code-mode
+    :ensure t
+    :custom (fira-code-mode-disabled-ligatures '("[]" "#{" "#(" "#_" "#_(" "x")) 
+    :config (global-fira-code-mode))
+#+end_src
 * Org-mode
 #+BEGIN_SRC emacs-lisp
   (use-package org
@@ -177,3 +184,18 @@
     :config
     (setq python-shell-interpreter "python3"))
 #+END_SRC
+
+** C/C++
+#+begin_src emacs-lisp
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-tramp-connection "clangd")
+                    :major-modes '(c-mode c++-mode)
+                    :remote? t
+                    :server-id 'clangd-remote))
+
+  (use-package c-mode
+    :hook (c-mode . lsp))
+
+  (use-package c++-mode
+    :hook (c++-mode . lsp))
+#+end_src
