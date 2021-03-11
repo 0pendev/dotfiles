@@ -36,7 +36,7 @@ zin\
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --user -y \
 	org.flameshot.Flameshot org.mozilla.firefox org.gimp.GIMP org.inkscape.Inkscape\
-	org.keepassxc.KeePassXC org.signal.Signal org.telegram.desktop
+	org.keepassxc.KeePassXC org.signal.Signal org.telegram.desktop org.gtk.Gtk3theme.Flat-Remix-GTK-Blue-Dark-Solid
 
 log "Installing fonts"
 zin -t pattern fonts
