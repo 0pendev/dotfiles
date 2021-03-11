@@ -1,25 +1,26 @@
 ###
 # Theming
 ################################################################################
-output "*" bg "/usr/share/backgrounds/Ryan Schroeder.jpg" fill
+output "*" bg "/usr/share/backgrounds/Jonas Nilsson Lee.jpg" fill
 
 # Default configuraiton
 font pango:DejaVu Sans Mono 8
-default_border pixel 4
 
-# Albert configuration
-bindsym $mod+d exec albert toggle
+gaps inner 10
+bindsym $mod+d exec wofi -S drun -I
 
+
+set $gnome-schema org.gnome.desktop.interface
 exec_always {
-    gsettings set org.gnome.desktop.interface gtk-theme 'Breeze'
-    gsettings set org.gnome.desktop.interface icon-theme 'elementary'
-    gsettings set org.gnome.desktop.interface cursor-theme 'Breeze_Snow'
+    gsettings set $gnome-scheme gtk-theme 'Flat-Remix-GTK-Blue-Dark-Solid'
+    gsettings set $gnome-scheme icon-theme 'Flat-Remix-Blue-Dark'
+    gsettings set $gnome-scheme cursor-theme 'Breeze_Snow'
 }
 
 # https://thomashunter.name/i3-configurator/
 # class                 border  bground text    indicator child_border
-client.focused          #32323280 #32323280 #FFFFFF #32323280   #32323280
-client.focused_inactive #33333300 #5F676A00 #323232 #484E5000   #5F676A00
-client.unfocused        #33333300 #22222200 #323232 #292D2E00   #22222200
-client.urgent           #2F343A00 #90000000 #FFFFFF00 #90000000   #90000000
-client.placeholder      #00000000 #0C0C0C00 #FFFFFF00 #00000000   #0C0C0C00
+client.focused          #367bf080 #367bf080 #FFFFFF #367bf080   #367bf080
+client.focused_inactive #5F676A80 #5F676A80 #FFFFFF #484E5080   #5F676A80
+client.unfocused        #22222280 #22222280 #888888 #292D2E80   #22222280
+client.urgent           #90000080 #90000080 #FFFFFF #90000080   #90000080
+client.placeholder      #0C0C0C80 #0C0C0C80 #FFFFFF #00000080   #0C0C0C80
