@@ -1,3 +1,5 @@
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 # Sets emacs binary to point to flatpak
 export EMACS="/usr/bin/flatpak run org.gnu.emacs"
 
