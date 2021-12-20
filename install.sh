@@ -21,7 +21,7 @@ zin\
      thunar thunar-plugin-archive engrampa
 
 log "Installing development tools"
-sudo zyppe in -yl\
+zin\
      emacs git zsh podman flatpak buildah
 
 log "Installing theme assets"
