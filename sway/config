@@ -1,3 +1,2 @@
-#### Default openSUSE config for sway
-set $mod Mod4
+exec "systemctl --user import-environment; systemctl --user start sway-session.target"
 include ./config.d/*

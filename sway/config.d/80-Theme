@@ -1,26 +1,30 @@
 ###
 # Theming
 ################################################################################
-output "*" bg "/usr/share/backgrounds/Jonas Nilsson Lee.jpg" fill
+output "*" bg "/usr/share/backgrounds/Morskie Oko.jpg" fill
 
 # Default configuraiton
 font pango:DejaVu Sans Mono 8
 
-gaps inner 10
-bindsym $mod+d exec wofi -S drun -I
+# Specifies an outer gaps
+gaps outer 6
 
+bar {
+    swaybar_command waybar
+}
 
-set $gnome-schema org.gnome.desktop.interface
+seat seat0 xcursor_theme Breeze_Snow
+set $gnome-scheme org.gnome.desktop.interface
 exec_always {
-    gsettings set $gnome-scheme gtk-theme 'Flat-Remix-GTK-Blue-Dark-Solid'
-    gsettings set $gnome-scheme icon-theme 'Flat-Remix-Blue-Dark'
+    gsettings set $gnome-scheme gtk-theme 'Flat-Remix-GTK-Green-Dark-Solid'
+    gsettings set $gnome-scheme icon-theme 'Flat-Remix-Green-Dark'
     gsettings set $gnome-scheme cursor-theme 'Breeze_Snow'
 }
 
 # https://thomashunter.name/i3-configurator/
 # class                 border  bground text    indicator child_border
-client.focused          #367bf080 #367bf080 #FFFFFF #367bf080   #367bf080
-client.focused_inactive #5F676A80 #5F676A80 #FFFFFF #484E5080   #5F676A80
-client.unfocused        #22222280 #22222280 #888888 #292D2E80   #22222280
-client.urgent           #90000080 #90000080 #FFFFFF #90000080   #90000080
-client.placeholder      #0C0C0C80 #0C0C0C80 #FFFFFF #00000080   #0C0C0C80
+client.focused          #06A284 #06A284 #FFFFFF #06A284   #06A284
+client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
+client.unfocused        #333333 #222222 #888888 #292D2E   #222222
+client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
