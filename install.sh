@@ -22,9 +22,10 @@ zal patterns-sway pulseaudio alsa
 
 log "Installing wayland graphical environment"
 zin\
-    swaybg sway waybar swayidle swaylock
-    xdg-desktop-portal-wlr xdg-desktop-portal-kde xdg-desktop-portal-gnome
-    pipewire brightnessctl powertop gnome-keyring NetworkManager-connection-editor
+    swaybg sway waybar swayidle swaylock \
+    xdg-desktop-portal-wlr xdg-desktop-portal-kde xdg-desktop-portal-gnome \
+    pipewire pipewire-libjack-0_3 pipewire-alsa pipewire-pulseaudio \
+    brightnessctl powertop gnome-keyring NetworkManager-connection-editor
 
 log "Installing development tools"
 zin\

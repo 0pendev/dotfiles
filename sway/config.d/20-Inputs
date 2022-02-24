@@ -3,6 +3,7 @@
 ################################################################################
 input * {
     xkb_layout fr
+    xkb_options compose:prsc
 }
 
 input 2:14:ETPS/2_Elantech_Touchpad {
