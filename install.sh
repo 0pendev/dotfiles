@@ -33,18 +33,18 @@ zin\
 
 log "Installing theme assets"
 zin\
-     breeze5-cursors elementary-wallpapers fontawesome-fonts
+     papirus-icon-theme fontawesome-fonts
 
 log "Installing fonts"
 zin -t pattern fonts
 
 log "Configuring flatpak for the current user"
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 log "Installing desktop applications"
 flatpak install --user -y \
     org.gnu.emacs com.yubico.yubioath me.kozec.syncthingtk org.gnome.Geary\
     ch.protonmail.protonmail-bridge org.keepassxc.KeePassXC org.mozilla.firefox\
-    org.signal.Signal org.telegram.desktop org.gtk.Gtk3theme.Flat-Remix-GTK-Green-Dark-Solid
+    org.signal.Signal org.telegram.desktop
 
 log "Setting up powertop"
 sudo systemctl enable powertop
@@ -61,6 +61,20 @@ ln -s ~/Documents/dotfiles/sway ~/.config
 ln -s ~/Documents/dotfiles/git/.gitconfig ~/.gitconfig
 ln -s ~/Documents/dotfiles/waybar ~/.config
 ln -s ~/Documents/dotfiles/wofi ~/.config
+
+log "Downloading catppuccin ressource"
+warning "Dotfiles are not fully migrated from flat-remox yet"
+THEME=~/Documents/catppuccun
+mkdir $THEME
+git clone https://github.com/catppuccin/alacritty $THEME/alacritty
+git clone https://github.com/catppuccin/gtk $THEME/gtk
+git clone https://github.com/catppuccin/cursors $THEME/cursors
+git clone https://github.com/catppuccin/papirus-folders $THEME/papirus-folders
+git clone https://github.com/catppuccin/nvim $THEME/nvim
+git clone https://github.com/catppuccin/wallpapers $THEME/wallpapers
+git clone https://github.com/catppuccin/duckduckgo $THEME/duckduckgo
+git clone https://github.com/catppuccin/telegram $THEME/telegram
+git clone https://github.com/catppuccin/firefox $THEME/firefox
 
 log "Configure subuids and subgid to support rootless podman"
 sudo usermod --add-subuids 10000-65536 $USER
