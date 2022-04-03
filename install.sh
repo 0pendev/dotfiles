@@ -61,6 +61,7 @@ ln -s ~/Documents/dotfiles/sway ~/.config
 ln -s ~/Documents/dotfiles/git/.gitconfig ~/.gitconfig
 ln -s ~/Documents/dotfiles/waybar ~/.config
 ln -s ~/Documents/dotfiles/wofi ~/.config
+ln -s ~/Documents/dotfiles/containers ~/.config/containers
 
 log "Downloading catppuccin ressource"
 warning "Dotfiles are not fully migrated from flat-remox yet"
