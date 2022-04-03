@@ -76,6 +76,7 @@ git clone https://github.com/catppuccin/wallpapers $THEME/wallpapers
 git clone https://github.com/catppuccin/duckduckgo $THEME/duckduckgo
 git clone https://github.com/catppuccin/telegram $THEME/telegram
 git clone https://github.com/catppuccin/firefox $THEME/firefox
+git clone https://github.com/refi64/stylepak $THEME/stylepak
 
 log "Configure subuids and subgid to support rootless podman"
 sudo usermod --add-subuids 10000-65536 $USER
