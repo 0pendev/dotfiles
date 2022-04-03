@@ -50,8 +50,15 @@ log "Setting up powertop"
 sudo systemctl enable powertop
 sudo systemctl start powertop
 
-log "Setting up dotfiles"
+log "Preparing home directory"
+mkdir ~/Downloads
+mkdir ~/Pictures
+mkdir ~/Public
+mkdir ~/bin
+mkdir ~/Desktop
 mkdir ~/Documents
+
+log "Setting up dotfiles"
 cd ~/Documents
 git clone http://github.com/0pendev/dotfiles
 rm -rf ~/.emacs*
