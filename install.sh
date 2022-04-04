@@ -24,7 +24,7 @@ log "Installing wayland graphical environment"
 zin\
     swaybg sway waybar swayidle swaylock \
     xdg-desktop-portal-wlr xdg-desktop-portal-kde xdg-desktop-portal-gnome \
-    pipewire pipewire-libjack-0_3 pipewire-alsa pipewire-pulseaudio \
+    pipewire pipewire-alsa pipewire-pulseaudio thunar\
     brightnessctl powertop gnome-keyring NetworkManager-connection-editor
 
 log "Installing development tools"
@@ -68,11 +68,13 @@ ln -s ~/Documents/dotfiles/sway ~/.config
 ln -s ~/Documents/dotfiles/git/.gitconfig ~/.gitconfig
 ln -s ~/Documents/dotfiles/waybar ~/.config
 ln -s ~/Documents/dotfiles/wofi ~/.config
-ln -s ~/Documents/dotfiles/containers ~/.config/containers
+ln -s ~/Documents/dotfiles/containers ~/.config
+ln -s ~/Documents/dotfiles/gtk-3.0 ~/.config
+ln -s ~/Documents/dotfiles/gtk2/.gtkrc-2.0 ~
 
 log "Downloading catppuccin ressource"
 warning "Dotfiles are not fully migrated from flat-remox yet"
-THEME=~/Documents/catppuccun
+THEME=~/Documents/catppuccin
 mkdir $THEME
 git clone https://github.com/catppuccin/alacritty $THEME/alacritty
 git clone https://github.com/catppuccin/gtk $THEME/gtk
