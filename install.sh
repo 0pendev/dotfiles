@@ -71,6 +71,7 @@ ln -s ~/Documents/dotfiles/wofi ~/.config
 ln -s ~/Documents/dotfiles/containers ~/.config
 ln -s ~/Documents/dotfiles/gtk-3.0 ~/.config
 ln -s ~/Documents/dotfiles/gtk2/.gtkrc-2.0 ~
+ln -s ~/Documents/dotfiles/doom ~/.doom.d
 
 log "Downloading catppuccin ressource"
 warning "Dotfiles are not fully migrated from flat-remox yet"
