@@ -1,7 +1,7 @@
 ###
 # Theming
 ################################################################################
-output "*" bg "/usr/share/backgrounds/Morskie Oko.jpg" fill
+output "*" bg "~/Documents/catppuccin/wallpapers/minimalistic/black5_unicat.png" fill
 
 # Default configuraiton
 font pango:DejaVu Sans Mono 8
@@ -16,15 +16,17 @@ bar {
 seat seat0 xcursor_theme Breeze_Snow
 set $gnome-scheme org.gnome.desktop.interface
 exec_always {
-    gsettings set $gnome-scheme gtk-theme 'Flat-Remix-GTK-Green-Dark-Solid'
-    gsettings set $gnome-scheme icon-theme 'Flat-Remix-Green-Dark'
-    gsettings set $gnome-scheme cursor-theme 'Breeze_Snow'
+    gsettings set $gnome-scheme gtk-theme 'Catppuccin-teal'
+    gsettings set $gnome-scheme icon-theme 'Papirus-Dark'
+    gsettings set $gnome-scheme cursor-theme 'Catppuccin-teal-Cursors'
 }
 
 # https://thomashunter.name/i3-configurator/
 # class                 border  bground text    indicator child_border
-client.focused          #06A284 #06A284 #FFFFFF #06A284   #06A284
-client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
-client.unfocused        #333333 #222222 #888888 #292D2E   #222222
-client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
-client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+client.focused          #C9CBFF #C9CBFF #1A1826 #C9CBFF   #C9CBFF
+client.focused_inactive #6E6C7E #6E6C7E #FFFFFF #6E6C7E   #6E6C7E
+client.unfocused        #1E1E2E #1E1E2E #6E6C7E #1E1E2E   #1E1E2E
+client.urgent           #F28FAD #F28FAD #FFFFFF #F28FAD   #F28FAD
+client.placeholder      #161320 #161320 #FFFFFF #161320   #161320
+
+client.background       #FFFFFF

@@ -10,7 +10,7 @@
 
 window#waybar {
     color: #ffffff;
-    background-color: #424242;
+    background-color: #161320;
     border-bottom: 0px solid #ffffff;
 }
 
@@ -20,16 +20,18 @@ window#waybar.solo {
 }
 
 #workspaces {
-    margin: 0 5px;
+    margin: 0;
+    padding:0;
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0;
+    margin: 0;
     color: #ffffff;
 }
 
 #workspaces button.focused {
-    background-color: #424242;
+    background-color: #161320;
     color: #ffffff;
     border-style: solid;
     border-width: 1px;
@@ -41,7 +43,7 @@ window#waybar.solo {
 }
 
 #workspaces button.urgent {
-    color: rgba(33, 164, 223, 1);
+    color: #F28FAD;
 }
 
 #mode, 
@@ -63,13 +65,13 @@ window#waybar.solo {
 }
 
 #battery.warning {
-   color: rgba(255, 210, 4, 1);
+   color: #FAE3B0;
 }
 
 #battery.critical {
-    color: rgba(238, 46, 36, 1);
+    color: #F28FAD;
 }
 
 #battery.charging {
-    color: rgba(217, 216, 216, 1);
+    color: #ABE9B3;
 }
