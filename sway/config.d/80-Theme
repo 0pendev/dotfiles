@@ -13,13 +13,7 @@ bar {
     swaybar_command waybar
 }
 
-seat seat0 xcursor_theme Breeze_Snow
-set $gnome-scheme org.gnome.desktop.interface
-exec_always {
-    gsettings set $gnome-scheme gtk-theme 'Catppuccin-teal'
-    gsettings set $gnome-scheme icon-theme 'Papirus-Dark'
-    gsettings set $gnome-scheme cursor-theme 'Catppuccin-teal-Cursors'
-}
+seat seat0 xcursor_theme Catppuccin-Blue-Cursors
 
 # https://thomashunter.name/i3-configurator/
 # class                 border  bground text    indicator child_border
