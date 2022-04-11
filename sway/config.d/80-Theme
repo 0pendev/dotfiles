@@ -1,7 +1,7 @@
 ###
 # Theming
 ################################################################################
-output "*" bg "~/Documents/catppuccin/wallpapers/minimalistic/black5_unicat.png" fill
+output "*" bg "~/Pictures/odin-dark.jpg" fill
 
 # Default configuraiton
 font pango:DejaVu Sans Mono 8
@@ -13,14 +13,20 @@ bar {
     swaybar_command waybar
 }
 
-seat seat0 xcursor_theme Catppuccin-Blue-Cursors
+seat seat0 xcursor_theme Breeze_Snow
+set $gnome-scheme org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-scheme gtk-theme 'Flat-Remix-GTK-Blue-Dark-Solid'
+    gsettings set $gnome-scheme icon-theme 'Flat-Remix-Blue-Dark'
+    gsettings set $gnome-scheme cursor-theme 'Breeze'
+}
 
 # https://thomashunter.name/i3-configurator/
 # class                 border  bground text    indicator child_border
-client.focused          #C9CBFF #C9CBFF #1A1826 #C9CBFF   #C9CBFF
-client.focused_inactive #6E6C7E #6E6C7E #FFFFFF #6E6C7E   #6E6C7E
-client.unfocused        #1E1E2E #1E1E2E #6E6C7E #1E1E2E   #1E1E2E
-client.urgent           #F28FAD #F28FAD #FFFFFF #F28FAD   #F28FAD
-client.placeholder      #161320 #161320 #FFFFFF #161320   #161320
+client.focused          #115FE2 #115FE2 #FFFFFF #115FE2   #115FE2
+client.focused_inactive #2F343F #2F343F #FFFFFF #2F343F   #2F343F
+client.unfocused        #1F2128 #1F2128 #FFFFFF #1F2128   #1F2128
+client.urgent           #BF1717 #BF1717 #FFFFFF #BF1717   #BF1717
+client.placeholder      #0C0C0C #0C0C0C #FFFFFF #000000   #0C0C0C
 
 client.background       #FFFFFF
