@@ -10,7 +10,7 @@
 
 window#waybar {
     color: #ffffff;
-    background-color: #000000;
+    background-color: RGBA(0,0,0, 0.8);
     border-bottom: 0px solid #ffffff;
 }
 
@@ -29,7 +29,7 @@ window#waybar.solo {
 }
 
 #workspaces button.focused {
-    background-color: #115FE2;
+    background-color: rgba(17,95,226, 0.8);
     color: #ffffff;
     border-style: solid;
     border-width: 1px;

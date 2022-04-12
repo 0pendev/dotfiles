@@ -33,7 +33,7 @@ zin\
 
 log "Installing theme assets"
 zin\
-     papirus-icon-theme fontawesome-fonts
+     breeze5-cursors fontawesome-fonts
 
 log "Installing fonts"
 zin -t pattern fonts
@@ -73,20 +73,8 @@ ln -s ~/Documents/dotfiles/gtk-3.0 ~/.config
 ln -s ~/Documents/dotfiles/gtk2/.gtkrc-2.0 ~
 ln -s ~/Documents/dotfiles/doom ~/.doom.d
 
-log "Downloading catppuccin ressource"
-warning "Dotfiles are not fully migrated from flat-remox yet"
-THEME=~/Documents/catppuccin
-mkdir $THEME
-git clone https://github.com/catppuccin/alacritty $THEME/alacritty
-git clone https://github.com/catppuccin/gtk $THEME/gtk
-git clone https://github.com/catppuccin/cursors $THEME/cursors
-git clone https://github.com/catppuccin/papirus-folders $THEME/papirus-folders
-git clone https://github.com/catppuccin/nvim $THEME/nvim
-git clone https://github.com/catppuccin/wallpapers $THEME/wallpapers
-git clone https://github.com/catppuccin/duckduckgo $THEME/duckduckgo
-git clone https://github.com/catppuccin/telegram $THEME/telegram
-git clone https://github.com/catppuccin/firefox $THEME/firefox
-git clone https://github.com/refi64/stylepak $THEME/stylepak
+log "Downloading wallpaper"
+wget --output-document  ~/Pictures/odin-dark.jpg https://raw.githubusercontent.com/elementary/wallpapers/master/backgrounds/odin-dark.jpg
 
 log "Configure subuids and subgid to support rootless podman"
 sudo usermod --add-subuids 10000-65536 $USER

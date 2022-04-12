@@ -23,10 +23,10 @@ exec_always {
 
 # https://thomashunter.name/i3-configurator/
 # class                 border  bground text    indicator child_border
-client.focused          #115FE2 #115FE2 #FFFFFF #115FE2   #115FE2
-client.focused_inactive #2F343F #2F343F #FFFFFF #2F343F   #2F343F
-client.unfocused        #1F2128 #1F2128 #FFFFFF #1F2128   #1F2128
-client.urgent           #BF1717 #BF1717 #FFFFFF #BF1717   #BF1717
-client.placeholder      #0C0C0C #0C0C0C #FFFFFF #000000   #0C0C0C
+client.focused          #115FE2c0 #115FE2c0 #FFFFFF #115FE2c0   #115FE2c0
+client.focused_inactive #2F343Fc0 #2F343Fc0 #FFFFFF #2F343Fc0   #2F343Fc0
+client.unfocused        #1F2128c0 #1F2128c0 #FFFFFF #1F2128c0   #1F2128c0
+client.urgent           #BF1717c0 #BF1717c0 #FFFFFF #BF1717c0   #BF1717c0
+client.placeholder      #0C0C0Cc0 #0C0C0Cc0 #FFFFFF #000000c0   #0C0C0Cc0
 
-client.background       #FFFFFF
+client.background       #FFFFFFc0
