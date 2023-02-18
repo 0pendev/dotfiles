@@ -1,7 +1,7 @@
 ###
 # Theming
 ################################################################################
-output "*" bg "~/Pictures/odin-dark.jpg" fill
+output "*" bg "/usr/share/backgrounds/Luca Bravo.jpg" fill
 
 # Default configuraiton
 font pango:DejaVu Sans Mono 8
@@ -16,14 +16,14 @@ bar {
 seat seat0 xcursor_theme Breeze_Snow
 set $gnome-scheme org.gnome.desktop.interface
 exec_always {
-    gsettings set $gnome-scheme gtk-theme 'Flat-Remix-GTK-Blue-Dark-Solid'
-    gsettings set $gnome-scheme icon-theme 'Flat-Remix-Blue-Dark'
-    gsettings set $gnome-scheme cursor-theme 'Breeze'
+    gsettings set $gnome-scheme gtk-theme 'Qogir-Dark'
+    gsettings set $gnome-scheme icon-theme 'Qogir-dark'
+    gsettings set $gnome-scheme cursor-theme 'Qogir-dark'
 }
 
 # https://thomashunter.name/i3-configurator/
 # class                 border  bground text    indicator child_border
-client.focused          #115FE2c0 #115FE2c0 #FFFFFF #115FE2c0   #115FE2c0
+client.focused          #2d89c790 #2d89c790 #FFFFFF #2d89c790   #2d89c790
 client.focused_inactive #2F343Fc0 #2F343Fc0 #FFFFFF #2F343Fc0   #2F343Fc0
 client.unfocused        #1F2128c0 #1F2128c0 #FFFFFF #1F2128c0   #1F2128c0
 client.urgent           #BF1717c0 #BF1717c0 #FFFFFF #BF1717c0   #BF1717c0

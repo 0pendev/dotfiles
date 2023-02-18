@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "tray"],
     "modules-center": ["sway/window"],
-    "modules-right": ["network", "cpu", "memory", "temperature", "backlight", "idle_inhibitor", "battery", "battery#bat2", "pulseaudio", "custom/layout", "clock#date", "clock"],
+    "modules-right": ["network", "cpu", "memory", "temperature", "backlight", "idle_inhibitor", "battery", "pulseaudio", "custom/layout", "clock#date", "clock"],
     "sway/mode": {
         "format": " {}"
     },
@@ -79,8 +79,9 @@
         "format-icons": ["", ""]
     },
     "battery": {
+    	"bat": "BAT0",
         "states": {
-            // "good": 95,
+            "good": 80,
             "warning": 30,
             "critical": 15
         },
@@ -89,9 +90,6 @@
         "format-plugged": "",
         "format-alt": "{capacity}% {time}",
         "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface

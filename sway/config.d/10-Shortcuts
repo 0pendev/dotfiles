@@ -18,6 +18,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 ###
 # Program Launcher
 ################################################################################
+bindsym $mod+x exec pcmanfm
 bindsym $mod+d exec wofi -S drun -I
 bindsym $mod+l exec swaylock -f -c 424242
 bindsym $mod+t exec alacritty
