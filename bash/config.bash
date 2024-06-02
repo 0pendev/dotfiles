@@ -1,10 +1,4 @@
-export QT_QPA_PLATFORMTHEME=qt5ct
-
-# Sets emacs binary to point to flatpak
-export EMACS="/usr/bin/flatpak run org.gnu.emacs"
-
-# Pip binary path
-export PATH=$PATH:$HOME/.local/bin
+export QT_QPA_PLATFORMTHEME=qt6ct
 
 # GPG SSH Auth Configuration
 export GPG_TTY=$(tty)

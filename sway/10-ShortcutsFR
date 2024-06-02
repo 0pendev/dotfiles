@@ -18,10 +18,10 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 ###
 # Program Launcher
 ################################################################################
-bindsym $mod+x exec kitty ranger
+bindsym $mod+x exec pcmanfm
 bindsym $mod+d exec wofi -S drun -I
 bindsym $mod+l exec swaylock -f -c 424242
-bindsym $mod+t exec kitty
+bindsym $mod+t exec alacritty
 bindsym $mod+c exec flatpak run org.gnu.emacs
 bindsym $mod+p exec grim -g "$(slurp -d)" - > ~/Pictures/Screenshots/$(date | sed 's/ /_/g').png
 
@@ -88,26 +88,26 @@ set $ws8 "8"
 set $ws9 "9"
 # switch to workspace
 bindsym --to-code {
-	$mod+1 workspace 1
-	$mod+2 workspace 2
-	$mod+3 workspace 3
-	$mod+4 workspace 4
-	$mod+5 workspace 5
-	$mod+6 workspace 6
-	$mod+7 workspace 7
-	$mod+8 workspace 8
-	$mod+9 workspace 9
-	$mod+0 workspace 10
-	$mod+Shift+1 move container to workspace 1
-	$mod+Shift+2 move container to workspace 2
-	$mod+Shift+3 move container to workspace 3
-	$mod+Shift+4 move container to workspace 4
-	$mod+Shift+5 move container to workspace 5
-	$mod+Shift+6 move container to workspace 6
-	$mod+Shift+7 move container to workspace 7
-	$mod+Shift+8 move container to workspace 8
-	$mod+Shift+9 move container to workspace 9
-	$mod+Shift+0 move container to workspace 10
+	$mod+ampersand workspace 1
+	$mod+eacute workspace 2
+	$mod+quotedbl workspace 3
+	$mod+apostrophe workspace 4
+	$mod+parenleft workspace 5
+	$mod+minus workspace 6
+	$mod+egrave workspace 7
+	$mod+underscore workspace 8
+	$mod+ccedilla workspace 9
+	$mod+agrave workspace 10
+	$mod+Shift+ampersand move container to workspace 1
+	$mod+Shift+eacute move container to workspace 2
+	$mod+Shift+quotedbl move container to workspace 3
+	$mod+Shift+apostrophe move container to workspace 4
+	$mod+Shift+parenleft move container to workspace 5
+	$mod+Shift+minus move container to workspace 6
+	$mod+Shift+egrave move container to workspace 7
+	$mod+Shift+underscore move container to workspace 8
+	$mod+Shift+ccedilla move container to workspace 9
+	$mod+Shift+agrave move container to workspace 10
 	$mod+Ctrl+Left workspace prev
 	$mod+Ctrl+Right workspace next
 }

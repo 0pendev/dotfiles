@@ -1,9 +1,10 @@
-###
+### 
 # Inputs
 ################################################################################
+
 input * {
-    xkb_layout fr
-    xkb_options compose:prsc
+    xkb_options compose:ralt
+    xkb_layout us
     tap enabled
 }
 
@@ -30,3 +31,6 @@ input 1386:18870:Wacom_HID_49B6_Finger {
 set $laptop eDP-1
 bindswitch --reload lid:on output $laptop disable
 bindswitch --reload lid:off output $laptop enable
+
+output DP-4 position 1480,140 transform 270
+output DP-3 mode 2560x1440@60Hz position 2560,390 scale 1
