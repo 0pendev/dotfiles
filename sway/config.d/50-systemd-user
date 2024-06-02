@@ -1,0 +1,10 @@
+# See: https://aur.archlinux.org/cgit/aur.git/tree/50-systemd-user.conf?h=sway9
+# sway does not set DISPLAY/WAYLAND_DISPLAY in the systemd user environment
+# Adapted from xorg's 50-systemd-user.sh, which achieves a similar goal.
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XAUTHORITY
+exec dbus-update-activation-environment --all
+exec --no-startup-id gnome-keyring-daemon --replace --components=secrets
+
