@@ -19,7 +19,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 # Program Launcher
 ################################################################################
 bindsym $mod+x exec kitty ranger
-bindsym $mod+d exec wofi -S drun -I
+bindsym $mod+d exec wofi -S drun -I -i
 bindsym $mod+l exec swaylock -f -c 424242
 bindsym $mod+t exec kitty
 bindsym $mod+c exec flatpak run org.gnu.emacs
