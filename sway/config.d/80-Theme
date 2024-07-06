@@ -13,20 +13,25 @@ bar {
     swaybar_command waybar
 }
 
-seat seat0 xcursor_theme Breeze_Snow
 set $gnome-scheme org.gnome.desktop.interface
 exec_always {
-    gsettings set $gnome-scheme gtk-theme 'Qogir-Dark'
-    gsettings set $gnome-scheme icon-theme 'Qogir-dark'
-    gsettings set $gnome-scheme cursor-theme 'Qogir-dark'
+    gsettings set $gnome-scheme gtk-theme 'WhiteSur-Dark-solid'
+    gsettings set $gnome-scheme icon-theme 'WhiteSur-dark'
+    gsettings set $gnome-scheme cursor-theme 'WhiteSur Cursors'
 }
+
+for_window [title="Junction"] floating enable
+for_window [title="Bitwarden"] floating enable
+for_window [title="Select one or more files to open"] floating enable
+for_window [title="Open File"] floating enable
+for_window [title="Load Options"] floating enable
+for_window [title="Initial Analysis"] floating enable
 
 # https://thomashunter.name/i3-configurator/
 # class                 border  bground text    indicator child_border
-client.focused          #2d89c790 #2d89c790 #FFFFFF #2d89c790   #2d89c790
-client.focused_inactive #2F343Fc0 #2F343Fc0 #FFFFFF #2F343Fc0   #2F343Fc0
-client.unfocused        #1F2128c0 #1F2128c0 #FFFFFF #1F2128c0   #1F2128c0
-client.urgent           #BF1717c0 #BF1717c0 #FFFFFF #BF1717c0   #BF1717c0
-client.placeholder      #0C0C0Cc0 #0C0C0Cc0 #FFFFFF #000000c0   #0C0C0Cc0
-
-client.background       #FFFFFFc0
+client.focused          #2d89c7 #2d89c7 #FFFFFF #2d89c7   #2d89c7
+client.focused_inactive #2F343F #2F343F #FFFFFF #2F343F   #2F343F
+client.unfocused        #1F2128 #1F2128 #FFFFFF #1F2128   #1F2128
+client.urgent           #BF1717 #BF1717 #FFFFFF #BF1717   #BF1717
+client.placeholder      #0C0C0C #0C0C0C #FFFFFF #000000   #0C0C0C
+client.background       #FFFFFF
